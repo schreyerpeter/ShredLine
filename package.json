@@ -1,0 +1,18 @@
+{
+  "name": "shredline",
+  "version": "1.0.0",
+  "description": "Surfline Clone",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "pschreyer",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "json-parser": "^1.1.5",
+    "request": "^2.72.0"
+  }
+}
