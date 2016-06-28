@@ -9,11 +9,37 @@ app.use(bodyParser);
 
 var cams = require('./cams.js');
 
-request('http://api.spitcast.com/api/county/spots/orange-county', function(error, response,body){
+request('http://api.spitcast.com/api/spot/all', function(error, response,body){
   if(!error && response.statusCode == 200){
-    console.log("Good work");
-  }
+    var info = JSON.parse(body);
+    info.forEach(function(location){
+      cams.forEach(function(spot){
+        if(location.spot_name == spot.name){
+          spot.id = location.spot_id;
+          spot.conditionURL = "http://api.spitcast.com/api/spot/forecast/"+spot.id+"/";
+        }
+      })
+    })
+  };
+  cams.forEach(function(spot){
+    request(spot.conditionURL, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        var data = JSON.parse(body);
+        data.forEach(function(entry){
+          if(entry.spot_id == spot.id){
+            spot.date = entry.date;
+            spot.shape_detail = entry.shape_detail;
+            spot.shape_full = entry.shape_full;
+            spot.size = entry.size;
+          }
+        })
+        console.log(cams);
+      }
+    });
+  })
 });
+
+
 
 app.get('/', function(req,res){
   res.sendFile(__dirname + '/index.html')

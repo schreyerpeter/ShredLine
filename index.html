@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   </head>
   <body>
-    <div class="row">
+    <div id = 'homePage' class="row">
       <div class="col-lg-6">
         <div class="input-group">
           <div class="input-group-btn">
@@ -26,13 +26,22 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-6">
-          <div id="stream">
-            <iframe id='frame' width="640" height="360" src="" frameborder="0" scrolling="no" allowfullscreen></iframe><div style="margin: 10px 0px;"><a href="http://www.surfline.com/surf-report/36th-st-newport-southern-california_4226/" target="_blank"</a> Live HD Surf Cam. Check out more Surf Cams at <a href="http://www.surfline.com" target="_blank" title="Surfline.com - Global Surf Reports, Surf Forecasts, Live Surf Cams and Coastal Weather">Surfline.com</a></div>
+      <div id='resultsPage' class="row hidden">
+        <div class="row">
+          <h1 align='center' id="streamTitle"></h1>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-lg-offset-1">
+            <div id="stream">
+              <iframe id='frame' width="640" height="360" src="" frameborder="0" scrolling="no" allowfullscreen></iframe><div style="margin: 10px 0px;"><a href="http://www.surfline.com" target="_blank"> Live HD Surf Cam. Check out more Surf Cams at Surfline.com</a></div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-lg-offset-1">
+            <h2 id='spotSize'></h2>
+            <h3 id='spotConditions'></h3>
           </div>
         </div>
       </div>
     <script src="default.js" charset="utf-8"></script>
   </body>
-  </html>
+</html>
