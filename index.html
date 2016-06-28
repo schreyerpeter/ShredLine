@@ -3,10 +3,36 @@
   <head>
     <meta charset="utf-8">
     <title>ShredLine</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   </head>
   <body>
-    <input id="search" type="text" name="name" value="">
-    <button id="searchButton" type="button" name="button">Search</button>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-primary" id="searchButton">Search</button>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">36th Street</a></li>
+                <li><a href="#">54th Street</a></li>
+                <li><a href="#">The Wedge</a></li>
+              </ul>
+            </div>
+            <input id="search" type="text" class="form-control" aria-label="...">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div id="stream">
+            <iframe id='frame' width="640" height="360" src="" frameborder="0" scrolling="no" allowfullscreen></iframe><div style="margin: 10px 0px;"><a href="http://www.surfline.com/surf-report/36th-st-newport-southern-california_4226/" target="_blank"</a> Live HD Surf Cam. Check out more Surf Cams at <a href="http://www.surfline.com" target="_blank" title="Surfline.com - Global Surf Reports, Surf Forecasts, Live Surf Cams and Coastal Weather">Surfline.com</a></div>
+          </div>
+        </div>
+      </div>
     <script src="default.js" charset="utf-8"></script>
   </body>
-</html>
+  </html>

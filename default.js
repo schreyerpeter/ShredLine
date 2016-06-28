@@ -17,9 +17,17 @@ searchButton.addEventListener('click', function(e){
   xhr.open('GET','/streams');
   xhr.setRequestHeader('Content-type', 'application/json');
   xhr.send(search.value);
-  console.log('Durr');
 
   xhr.addEventListener("load",function(){
-    console.log("Hey");
+    var response = JSON.parse(xhr.responseText);
+
+    response.forEach(function(location){
+      if(location.id.toLowerCase().indexOf(search.value.toLowerCase())!==-1){
+        var stream = document.getElementById('stream');
+        var frame = document.getElementById('frame');
+        console.log(location.url);
+        frame.setAttribute('src',location.url);
+      }
+    })
   })
 });

@@ -11,7 +11,7 @@ var cams = require('./cams.js');
 
 request('http://api.spitcast.com/api/county/spots/orange-county', function(error, response,body){
   if(!error && response.statusCode == 200){
-    console.log("Great job");
+    console.log("Good work");
   }
 });
 
@@ -26,9 +26,8 @@ app.get('/default.js', function(req,res){
 app.get('/streams', function(req,res){
   var locations = [];
   cams.forEach(function(location){
-    locations.push(location.id);
+    locations.push(location);
   })
-  console.log(res.body);
   res.send(locations);
 })
 
