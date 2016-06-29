@@ -1,47 +1,69 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>ShredLine</title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  </head>
-  <body>
-    <div id = 'homePage' class="row">
-      <div class="col-lg-6">
-        <div class="input-group">
-          <div class="input-group-btn">
-            <button type="button" class="btn btn-primary" id="searchButton">Search</button>
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="caret"></span>
-              <span class="sr-only">Toggle Dropdown</span></button>
+<head>
+  <meta charset="utf-8">
+  <title>ShredLine</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div id = 'homePage' class="container-fluid">
+    <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a style="white" class="navbar-brand" href="#">ShredLine</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">County <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">36th Street</a></li>
-                <li><a href="#">54th Street</a></li>
-                <li><a href="#">The Wedge</a></li>
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">San Diego</a></li>
+                <li><a href="#">Los Angeles</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
               </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input id='search' type="text" class="form-control" placeholder="Search by location">
             </div>
-            <input id="search" type="text" class="form-control" aria-label="...">
-          </div>
+            <button id='searchButton' type="submit" class="btn btn-default">Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+          </ul>
         </div>
       </div>
-      <div id='resultsPage' class="row hidden">
-        <div class="row">
-          <h1 align='center' id="streamTitle"></h1>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 col-lg-offset-1">
-            <div id="stream">
-              <iframe id='frame' width="640" height="360" src="" frameborder="0" scrolling="no" allowfullscreen></iframe><div style="margin: 10px 0px;"><a href="http://www.surfline.com" target="_blank"> Live HD Surf Cam. Check out more Surf Cams at Surfline.com</a></div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-lg-offset-1">
-            <h2 id='spotSize'></h2>
-            <h3 id='spotConditions'></h3>
-          </div>
+    </nav>
+  </div>
+  <div id='resultsPage' class="row hidden">
+    <div class="row">
+      <h1 align='center' id="streamTitle"></h1>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-1">
+        <div id="stream">
+          <iframe id='frame' width="640" height="360" src="" frameborder="0" scrolling="no" allowfullscreen></iframe><div style="margin: 10px 0px;"><a href="http://www.surfline.com" target="_blank"> Live HD Surf Cam. Check out more Surf Cams at Surfline.com</a></div>
         </div>
       </div>
-    <script src="default.js" charset="utf-8"></script>
-  </body>
+      <div class="col-lg-4 col-lg-offset-1">
+        <h2 id='spotSize'></h2>
+        <h3 id='spotConditions'></h3>
+      </div>
+    </div>
+  </div>
+  <script src="default.js" charset="utf-8"></script>
+</body>
 </html>
