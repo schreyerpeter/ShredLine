@@ -93,6 +93,11 @@ returnToLogin2.addEventListener('click', function(e){
   swap(loginPage, createAccountPage);
 })
 
+var returnToLogin3 = document.getElementById('createAccountTitle');
+returnToLogin3.addEventListener('click', function(e){
+  swap(homePage, createAccountPage);
+})
+
 var createAccountButton1 = document.getElementById('createAccountButton1');
 createAccountButton1.addEventListener('click', function(e){
   swap(createAccountPage, loginPage);
