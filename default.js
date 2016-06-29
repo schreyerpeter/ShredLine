@@ -3,6 +3,14 @@ function swap(showPage, hidePage){
   showPage.className = showPage.className.replace(/hidden/g, " ");
 }
 
+// function makeMap(location){
+//   var newMap = document.getElementById('map');
+//   var map = new google.maps.Map(newMap, {
+//     center: {lat: location.latitude, lng: location.longitude},
+//     zoom: 8
+//   });
+// };
+
 document.addEventListener('load', function(e){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/');
@@ -36,7 +44,7 @@ searchButton.addEventListener('click', function(e){
         var streamTitle = document.getElementById('streamTitle');
         streamTitle.textContent = location.name;
         var spotSize = document.getElementById('spotSize');
-        spotSize.textContent = "Wave height: "+location.size + " ft";
+        spotSize.textContent = "Wave height: "+Math.floor(location.size_ft)+"-"+Math.ceil(location.size_ft) + " ft";
         if(location.size<3){
           spotSize.style.color = 'green';
         }
@@ -49,7 +57,14 @@ searchButton.addEventListener('click', function(e){
         var spotConditions = document.getElementById('spotConditions');
         spotConditions.textContent = "Conditions: "+location.shape_full;
         swap(resultsPage, homePage);
+        // makeMap(location);
       }
     })
   })
 });
+
+var returnHome = document.getElementById('title');
+returnHome.addEventListener('click', function(e){
+  var currentPage =
+  swap()
+})

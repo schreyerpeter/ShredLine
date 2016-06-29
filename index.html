@@ -6,9 +6,10 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="default.css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
-  <div id = 'homePage' class="container-fluid">
+  <div id='homePage' class="container-fluid">
     <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -18,7 +19,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a style="white" class="navbar-brand" href="#">ShredLine</a>
+          <a id = "title" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -39,7 +40,7 @@
             <div class="form-group">
               <input id='search' type="text" class="form-control" placeholder="Search by location">
             </div>
-            <button id='searchButton' type="submit" class="btn btn-default">Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            <button id='searchButton' type="button" class="btn btn-default">Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
           </form>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
@@ -49,6 +50,44 @@
     </nav>
   </div>
   <div id='resultsPage' class="row hidden">
+    <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a id = "title" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">County <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Orange</a></li>
+                <li><a href="#">San Diego</a></li>
+                <li><a href="#">Los Angeles</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input id='search' type="text" class="form-control" placeholder="Search by location">
+            </div>
+            <button id='searchButton' type="button" class="btn btn-default">Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <div class="row">
       <h1 align='center' id="streamTitle"></h1>
     </div>
@@ -61,6 +100,8 @@
       <div class="col-lg-4 col-lg-offset-1">
         <h2 id='spotSize'></h2>
         <h3 id='spotConditions'></h3>
+        <!-- <div id="map">
+        </div> -->
       </div>
     </div>
   </div>
