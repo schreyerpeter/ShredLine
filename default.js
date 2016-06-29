@@ -63,8 +63,7 @@ searchButton.addEventListener('click', function(e){
   })
 });
 
-var returnHome = document.getElementById('title');
+var returnHome = document.getElementById('spotTitle');
 returnHome.addEventListener('click', function(e){
-  var currentPage =
-  swap()
+  swap(homePage, resultsPage);
 })
