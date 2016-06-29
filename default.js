@@ -67,3 +67,38 @@ var returnHome = document.getElementById('spotTitle');
 returnHome.addEventListener('click', function(e){
   swap(homePage, resultsPage);
 })
+
+var loginReturn = document.getElementById('loginTitle');
+loginReturn.addEventListener('click', function(e){
+  swap(homePage, loginPage);
+})
+
+var login = document.getElementById('login');
+login.addEventListener('click', function(e){
+  swap(loginPage, homePage);
+})
+
+var login2 = document.getElementById('login2');
+login2.addEventListener('click', function(e){
+  swap(loginPage, resultsPage);
+})
+
+var returnToLogin = document.getElementById('returnToLogin');
+returnToLogin.addEventListener('click', function(e){
+  swap(loginPage, createAccountPage);
+})
+
+var returnToLogin2 = document.getElementById('returnToLogin2');
+returnToLogin2.addEventListener('click', function(e){
+  swap(loginPage, createAccountPage);
+})
+
+var createAccountButton1 = document.getElementById('createAccountButton1');
+createAccountButton1.addEventListener('click', function(e){
+  swap(createAccountPage, loginPage);
+})
+
+var createAccountButton2 = document.getElementById('createAccountButton2');
+createAccountButton2.addEventListener('click', function(e){
+  swap(createAccountPage, loginPage);
+})

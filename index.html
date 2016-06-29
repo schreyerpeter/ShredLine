@@ -43,7 +43,7 @@
             <button id='searchButton' type="button" class="btn btn-default">Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
           </form>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+            <li><a id="login" href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
           </ul>
         </div>
       </div>
@@ -59,7 +59,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a id = "title" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
+          <a id = "spotTitle" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -83,7 +83,7 @@
             <button id='searchButton' type="button" class="btn btn-default">Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
           </form>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+            <li><a id="login2" href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
           </ul>
         </div>
       </div>
@@ -102,6 +102,68 @@
         <h3 id='spotConditions'></h3>
         <!-- <div id="map">
         </div> -->
+      </div>
+    </div>
+  </div>
+  <div id='loginPage' class="row hidden">
+    <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a id = "loginTitle" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a id="createAccountButton1" href="#">Create Account <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="loginBox" class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+        <h1>Sign in</h1>
+        <h4>Need an account? <a id="createAccountButton2" href="#">Create account</a></h4>
+        <form>
+          <fieldset class="form-group">
+            <label for="formGroupExampleInput">Email</label>
+            <input type="text" class="form-control" id="userEmail" placeholder="example@example.com">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="formGroupExampleInput2">Password</label>
+            <input type="text" class="form-control" id="userPassword" placeholder="*******">
+            <button id="signInButton" class='btn btn-primary' type="button" name="button">SIGN IN</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id='createAccountPage' class="row hidden">
+    <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a id = "createAccountTitle" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a id="returnToLogin" href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="createAccountBox" class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+        <h1>Create Account</h1>
+        <h4>Already have an account? <a id="returnToLogin2" href="#">Sign In</a></h4>
+        <form>
+          <fieldset class="form-group">
+            <label for="formGroupExampleInput">Email</label>
+            <input type="text" class="form-control" id="userEmail" placeholder="example@example.com">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="formGroupExampleInput2">Password</label>
+            <input type="text" class="form-control" id="userPassword" placeholder="*******">
+            <button id="signInButton" class='btn btn-primary' type="button" name="button">SIGN IN</button>
+          </fieldset>
+        </form>
       </div>
     </div>
   </div>
