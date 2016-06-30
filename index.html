@@ -43,11 +43,18 @@
             <button id='searchButton' type="button" class="btn btn-default">Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
           </form>
           <ul class="nav navbar-nav navbar-right">
-            <li><a id="login" href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+            <li><a id="greetUser"></a></li>
+            <li><a id="login" href="#">Log In <span id="loginSpan" class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+            <li><a class="hidden" id="logout" href="#">Log Out <span id="loginSpan" class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
           </ul>
         </div>
       </div>
     </nav>
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-1">
+        <iframe id='homeFrame' width="640" height="360" src="" frameborder="0" scrolling="no" allowfullscreen></iframe><div style="margin: 10px 0px;"><a id="homeFrameText" href="http://www.surfline.com" target="_blank"></a></div>
+      </div>
+    </div>
   </div>
   <div id='resultsPage' class="row hidden">
     <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
@@ -76,12 +83,6 @@
               </ul>
             </li>
           </ul>
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input id='search' type="text" class="form-control" placeholder="Search by location">
-            </div>
-            <button id='searchButton' type="button" class="btn btn-default">Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-          </form>
           <ul class="nav navbar-nav navbar-right">
             <li><a id="login2" href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
           </ul>
@@ -129,7 +130,7 @@
           </fieldset>
           <fieldset class="form-group">
             <label for="formGroupExampleInput2">Password</label>
-            <input type="text" class="form-control" id="userPassword" placeholder="*******">
+            <input type="password" class="form-control" id="userPassword" placeholder="*******">
             <button id="signInButton" class='btn btn-primary' type="button" name="button">SIGN IN</button>
           </fieldset>
         </form>
@@ -157,26 +158,30 @@
           <div class="col-lg-6">
             <form>
               <fieldset class="form-group">
-                <label for="firstNameInput">First Name</label>
-                <input type="text" class="form-control" id="userFirstName" placeholder="John John">
+                <label for="firstNameInput">Full Name</label>
+                <input type="text" class="form-control" id="setUserName" placeholder="Kelly Slater">
               </fieldset>
             </form>
           </div>
           <div class="col-lg-6">
             <form>
               <fieldset>
-                <label for="lastNameInput">Last Name</label>
-                <input type="text" class="form-control" id="userLastName" placeholder="Florence">
+                <label id="usernameInput" for="lastNameInput">Username</label>
+                <input type="text" class="form-control" id="setUserUsername" placeholder="KellyGetsSoPitted">
               </fieldset>
             </form>
           </div>
         </div>
         <form>
           <fieldset class="form-group">
-            <label for="formGroupExampleInput2">Email</label>
+            <label for="formGroupEmail">Email</label>
             <input type="text" class="form-control" id="setUserEmail" placeholder="example@example.com">
-            <label for="formGroupExampleInput2">Password</label>
-            <input type="text" class="form-control" id="setUserPassword" placeholder="*******">
+          </fieldset>
+        </form>
+        <form>
+          <fieldset>
+            <label for="formGroupPassword">Password</label>
+            <input type="password" class="form-control" id="setUserPassword" placeholder="*******">
             <button id="createAccountButton" class='btn btn-primary' type="button" name="button">CREATE ACCOUNT</button>
             <h5>By clicking "Create Account" you agree to the ShredLine Terms of use and privacy policy.</h5>
           </fieldset>
