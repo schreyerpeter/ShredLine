@@ -5,9 +5,10 @@ var cookieParser = require('cookie-parser')();
 app.use(cookieParser);
 var bodyParser = require('body-parser').json();
 app.use(bodyParser);
-
+app.use(express.static('Pictures'));
 
 var cams = require('./cams.js');
+var users = require('./users.js');
 
 request('http://api.spitcast.com/api/spot/all', function(error, response,body){
   if(!error && response.statusCode == 200){
@@ -31,9 +32,11 @@ request('http://api.spitcast.com/api/spot/all', function(error, response,body){
             spot.shape_detail = entry.shape_detail;
             spot.shape_full = entry.shape_full;
             spot.size = entry.size;
+            spot.size_ft = entry.size_ft;
+            spot.latitude = entry.latitude;
+            spot.longitude = entry.longitude;
           }
         })
-        console.log(cams);
       }
     });
   })
@@ -43,6 +46,10 @@ request('http://api.spitcast.com/api/spot/all', function(error, response,body){
 
 app.get('/', function(req,res){
   res.sendFile(__dirname + '/index.html')
+});
+
+app.get('/default.css', function(req,res){
+  res.sendFile(__dirname+'/default.css')
 });
 
 app.get('/default.js', function(req,res){
@@ -55,6 +62,28 @@ app.get('/streams', function(req,res){
     locations.push(location);
   })
   res.send(locations);
+})
+
+app.post('/createAccount/:username/', function(req,res){
+  var matched = false;
+  console.log(req.body);
+  users.forEach(function(user){
+    if(req.params.username == user.username || req.body.username == user.username){
+      matched = true;
+      console.log('Match');
+    }
+    if (matched == false){
+      var userList = {};
+      userList.name = req.body.name;
+      userList.username = req.body.username;
+      userList.email = req.body.email;
+      userList.password = req.body.password;
+      userList.id = req.body.id;
+      console.log('No match');
+      users.push(userList);
+    }
+  })
+  res.send(matched);
 })
 
 app.listen(8080);

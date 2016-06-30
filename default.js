@@ -18,7 +18,8 @@ document.addEventListener('load', function(e){
   xhr.send();
 
   xhr.addEventListener('load', function(){
-    console.log("response");
+    var frame = document.getElementById('homeFrame');
+    frame.setAttribute('src',location.url);
   })
 });
 
@@ -41,6 +42,10 @@ searchButton.addEventListener('click', function(e){
         var stream = document.getElementById('stream');
         var frame = document.getElementById('frame');
         frame.setAttribute('src',location.url);
+        var homeFrame = document.getElementById('homeFrame');
+        homeFrame.setAttribute('src',location.url);
+        var homeFrameText = document.getElementById('homeFrameText');
+        homeFrameText.textContent = "Your daily cam: "+location.name;
         var streamTitle = document.getElementById('streamTitle');
         streamTitle.textContent = location.name;
         var spotSize = document.getElementById('spotSize');
@@ -106,4 +111,47 @@ createAccountButton1.addEventListener('click', function(e){
 var createAccountButton2 = document.getElementById('createAccountButton2');
 createAccountButton2.addEventListener('click', function(e){
   swap(createAccountPage, loginPage);
+})
+
+var createAccountButton = document.getElementById('createAccountButton');
+createAccountButton.addEventListener('click',function(e){
+  var setUserName = document.getElementById('setUserName').value;
+  var setUserUsername = document.getElementById('setUserUsername').value;
+  var setUserEmail = document.getElementById('setUserEmail').value;
+  var setUserPassword = document.getElementById('setUserPassword').value;
+
+  var data = {
+    "name":setUserName, "username":setUserUsername, "email":setUserEmail, "password":setUserPassword, "id":new Date().getTime()
+  }
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST','/createAccount/:username/');
+  xhr.setRequestHeader('Content-type','application/json');
+  xhr.send(JSON.stringify(data));
+
+  xhr.addEventListener('load', function(e){
+    var response = JSON.parse(xhr.responseText);
+    var usernameInput = document.getElementById('usernameInput');
+    if(response == true){
+      usernameInput.textContent = "Username - that username is already in use";
+      usernameInput.className = 'invalid';
+    }
+    else if(response == false){
+      usernameInput.textContent = "Username";
+      usernameInput.className = 'valid';
+      login = document.getElementById('login');
+      logout = document.getElementById('logout');
+      swap(logout, login);
+
+      greetUser = document.getElementById('greetUser');
+      var str = data.name;
+      var index = data.name.indexOf(" ");
+      greetUser.textContent = "Welcome, "+str.slice(0,index);
+      swap(homePage,createAccountPage);
+    }
+    else{
+      usernameInput.textContent = "Username";
+      usernameInput.className = 'neutral';
+    }
+  })
 })

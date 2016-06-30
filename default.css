@@ -30,3 +30,16 @@
   width: 100%;
   margin-top: 40px;
 }
+#homeFrame{
+  margin-top: 110px;
+  margin-left: -25px;
+}
+.valid{
+  color: green;
+}
+.invalid{
+  color: red;
+}
+.neutral{
+  color:black;
+}
