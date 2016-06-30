@@ -66,7 +66,6 @@ app.get('/streams', function(req,res){
 
 app.post('/createAccount/:username/', function(req,res){
   var matched = false;
-  console.log(req.body);
   users.forEach(function(user){
     if(req.params.username == user.username || req.body.username == user.username){
       matched = true;
@@ -86,4 +85,22 @@ app.post('/createAccount/:username/', function(req,res){
   res.send(matched);
 })
 
+app.use(function(req,res,next){
+  users.forEach(function(user){
+    if(req.body.username == user.username && req.body.password == user.password){
+      next();
+    }
+    else(res.sendStatus(401));
+  })
+})
+
+app.post('/login/:username/:password', function(req,res){
+  var currentUser;
+  users.forEach(function(user){
+    if(req.body.username == user.username){
+      currentUser = user.name;
+    }
+  })
+  res.send(currentUser);
+})
 app.listen(8080);

@@ -69,21 +69,9 @@
           <a id = "spotTitle" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
         </div>
         <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">County <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Orange</a></li>
-                <li><a href="#">San Diego</a></li>
-                <li><a href="#">Los Angeles</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
           <ul class="nav navbar-nav navbar-right">
+            <li><a id="greetUser2"></a></li>
+            <li><a class="hidden" id="logout2" href="#">Log Out <span id="loginSpan" class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
             <li><a id="login2" href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
           </ul>
         </div>
@@ -125,12 +113,12 @@
         <h4>Need an account? <a id="createAccountButton2" href="#">Create account</a></h4>
         <form>
           <fieldset class="form-group">
-            <label for="formGroupExampleInput">Email</label>
-            <input type="text" class="form-control" id="userEmail" placeholder="example@example.com">
+            <label for="formGroupExampleInput">Username</label>
+            <input type="text" class="form-control" id="signInUsername" placeholder="ShakaBrah">
           </fieldset>
           <fieldset class="form-group">
             <label for="formGroupExampleInput2">Password</label>
-            <input type="password" class="form-control" id="userPassword" placeholder="*******">
+            <input type="password" class="form-control" id="signInPassword" placeholder="*******">
             <button id="signInButton" class='btn btn-primary' type="button" name="button">SIGN IN</button>
           </fieldset>
         </form>

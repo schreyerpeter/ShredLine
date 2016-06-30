@@ -143,15 +143,59 @@ createAccountButton.addEventListener('click',function(e){
       logout = document.getElementById('logout');
       swap(logout, login);
 
+      login2 = document.getElementById('login2');
+      logout2 = document.getElementById('logout2');
+      swap(logout2, login2);
+
       greetUser = document.getElementById('greetUser');
+      greetUser2 = document.getElementById('greetUser2');
       var str = data.name;
       var index = data.name.indexOf(" ");
       greetUser.textContent = "Welcome, "+str.slice(0,index);
+      greetUser2.textContent = "Welcome, "+str.slice(0,index);
       swap(homePage,createAccountPage);
     }
     else{
       usernameInput.textContent = "Username";
       usernameInput.className = 'neutral';
+    }
+  })
+})
+
+var signInButton = document.getElementById('signInButton');
+signInButton.addEventListener('click', function(e){
+  var userName = document.getElementById('signInUsername');
+  var password = document.getElementById('signInPassword');
+  var data = {
+    "username":userName.value, "password":password.value
+  };
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST','/login/:username/:password');
+  xhr.setRequestHeader('Content-type','application/json');
+  xhr.send(JSON.stringify(data));
+
+  xhr.addEventListener('load',function(e){
+    console.log(xhr.responseText);
+    if(xhr.status == 401){
+      signInButton.className = 'btn btn-danger';
+      signInButton.textContent = 'INVALID USERNAME/PASSWORD';
+    }
+    else{
+      login = document.getElementById('login');
+      logout = document.getElementById('logout');
+      swap(logout, login);
+
+      login2 = document.getElementById('login2');
+      logout2 = document.getElementById('logout2');
+      swap(logout2, login2);
+
+      greetUser = document.getElementById('greetUser');
+      greetUser2 = document.getElementById('greetUser2');
+      var str = xhr.responseText;
+      var index = str.indexOf(" ");
+      greetUser.textContent = "Welcome, "+str.slice(0,index);
+      greetUser2.textContent = "Welcome, "+str.slice(0,index);
+      swap(homePage, loginPage);
     }
   })
 })
