@@ -46,6 +46,7 @@ searchButton.addEventListener('click', function(e){
         homeFrame.setAttribute('src',location.url);
         var homeFrameText = document.getElementById('homeFrameText');
         homeFrameText.textContent = "Your daily cam: "+location.name;
+        homeFrameText.setAttribute('align','center');
         var streamTitle = document.getElementById('streamTitle');
         streamTitle.textContent = location.name;
         var spotSize = document.getElementById('spotSize');
@@ -198,4 +199,37 @@ signInButton.addEventListener('click', function(e){
       swap(homePage, loginPage);
     }
   })
+})
+var logoutButton = document.getElementById('logout');
+logoutButton.addEventListener('click', function(e){
+  login = document.getElementById('login');
+  logout = document.getElementById('logout');
+  swap(login, logout);
+
+  login2 = document.getElementById('login2');
+  logout2 = document.getElementById('logout2');
+  swap(login2, logout2);
+
+  greetUser = document.getElementById('greetUser');
+  greetUser2 = document.getElementById('greetUser2');
+  greetUser.textContent = '';
+  greetUser2.textContent = '';
+  swap(homePage, loginPage);
+})
+
+var logoutButton2 = document.getElementById('logout2');
+logoutButton2.addEventListener('click', function(e){
+  login = document.getElementById('login');
+  logout = document.getElementById('logout');
+  swap(login, logout);
+
+  login2 = document.getElementById('login2');
+  logout2 = document.getElementById('logout2');
+  swap(login2, logout2);
+
+  greetUser = document.getElementById('greetUser');
+  greetUser2 = document.getElementById('greetUser2');
+  greetUser.textContent = '';
+  greetUser2.textContent = '';
+  swap(homePage, resultsPage);
 })
