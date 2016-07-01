@@ -226,9 +226,14 @@ signInButton.addEventListener('click', function(e){
       greetUser.textContent = "Welcome, "+str.slice(0,index);
       greetUser2.textContent = "Welcome, "+str.slice(0,index);
       swap(homePage, loginPage);
+
+      var notification = document.getElementById('notification');
+      var loginDiv = document.getElementById('loginDiv');
+      loginDiv.removeChild(notification);
     }
   })
 })
+//Logout buttons
 var logoutButton = document.getElementById('logout');
 logoutButton.addEventListener('click', function(e){
   login = document.getElementById('login');
@@ -261,4 +266,31 @@ logoutButton2.addEventListener('click', function(e){
   greetUser.textContent = '';
   greetUser2.textContent = '';
   swap(homePage, resultsPage);
+})
+
+//Adding to favorites button
+var addToFavorites = document.getElementById('addToFavorites');
+addToFavorites.addEventListener('click', function(e){
+  var currentBreak = document.getElementById('streamTitle').textContent;
+  var currentUser = document.getElementById('greetUser').textContent;
+  var data = {"currentUser":currentUser, "currentBreak":currentBreak};
+  if(currentUser.length == 0){
+    swap(loginPage, resultsPage);
+    var notification = document.createElement('div');
+    notification.setAttribute('class','alert alert-danger');
+    notification.setAttribute('id','notification');
+    notification.textContent = "You must be logged in to favorite breaks";
+    loginDiv = document.getElementById('loginDiv');
+    loginDiv.appendChild(notification);
+  }
+  else{
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST",'/favorites/add/:location');
+    xhr.setRequestHeader('Content-type','application/json');
+    xhr.send(JSON.stringify(data));
+
+    xhr.addEventListener('load', function(e){
+      console.log(xhr.responseText);
+    })
+  }
 })
