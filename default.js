@@ -121,46 +121,72 @@ createAccountButton.addEventListener('click',function(e){
   var setUserEmail = document.getElementById('setUserEmail').value;
   var setUserPassword = document.getElementById('setUserPassword').value;
 
-  var data = {
-    "name":setUserName, "username":setUserUsername, "email":setUserEmail, "password":setUserPassword, "id":new Date().getTime()
+  if(setUserUsername.length < 5){
+    var userNameInput = document.getElementById('usernameInput');
+    usernameInput.className += " invalid ";
+    usernameInput.textContent = 'Username must be at least five characters';
   }
-
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST','/createAccount/:username/');
-  xhr.setRequestHeader('Content-type','application/json');
-  xhr.send(JSON.stringify(data));
-
-  xhr.addEventListener('load', function(e){
-    var response = JSON.parse(xhr.responseText);
-    var usernameInput = document.getElementById('usernameInput');
-    if(response == true){
-      usernameInput.textContent = "Username - that username is already in use";
-      usernameInput.className = 'invalid';
+  if(setUserName.indexOf(' ')==-1){
+    var userNameInput = document.getElementById('userNameInput');
+    userNameInput.className += " invalid ";
+    userNameInput.textContent = 'Include first and last name';
+  }
+  if(setUserEmail.indexOf('@')==-1){
+    var userEmailInput = document.getElementById('userEmailInput');
+    userEmailInput.className += " invalid ";
+    userEmailInput.textContent = 'Email address must be valid';
+  }
+  if(setUserPassword.length<5){
+    var userPasswordInput = document.getElementById('userPasswordInput');
+    userPasswordInput.className += " invalid ";
+    userPasswordInput.textContent = 'Password must be at least five characters';
+  }
+  else{
+    var data = {
+      "name":setUserName, "username":setUserUsername, "email":setUserEmail, "password":setUserPassword, "id":new Date().getTime()
     }
-    else if(response == false){
-      usernameInput.textContent = "Username";
-      usernameInput.className = 'valid';
-      login = document.getElementById('login');
-      logout = document.getElementById('logout');
-      swap(logout, login);
 
-      login2 = document.getElementById('login2');
-      logout2 = document.getElementById('logout2');
-      swap(logout2, login2);
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST','/createAccount/:username/');
+    xhr.setRequestHeader('Content-type','application/json');
+    xhr.send(JSON.stringify(data));
 
-      greetUser = document.getElementById('greetUser');
-      greetUser2 = document.getElementById('greetUser2');
-      var str = data.name;
-      var index = data.name.indexOf(" ");
-      greetUser.textContent = "Welcome, "+str.slice(0,index);
-      greetUser2.textContent = "Welcome, "+str.slice(0,index);
-      swap(homePage,createAccountPage);
-    }
-    else{
-      usernameInput.textContent = "Username";
-      usernameInput.className = 'neutral';
-    }
-  })
+    xhr.addEventListener('load', function(e){
+      var response = JSON.parse(xhr.responseText);
+      var usernameInput = document.getElementById('usernameInput');
+      if(response == true){
+        usernameInput.textContent = "Username - that username is already in use";
+        usernameInput.className = 'invalid';
+      }
+      else if(response == false){
+        setUserName = '';
+        setUserUsername = '';
+        setUserEmail = '';
+        setUserPassword = '';
+        usernameInput.textContent = "Username";
+        usernameInput.className = 'valid';
+        login = document.getElementById('login');
+        logout = document.getElementById('logout');
+        swap(logout, login);
+
+        login2 = document.getElementById('login2');
+        logout2 = document.getElementById('logout2');
+        swap(logout2, login2);
+
+        greetUser = document.getElementById('greetUser');
+        greetUser2 = document.getElementById('greetUser2');
+        var str = data.name;
+        var index = data.name.indexOf(" ");
+        greetUser.textContent = "Welcome, "+str.slice(0,index);
+        greetUser2.textContent = "Welcome, "+str.slice(0,index);
+        swap(homePage,createAccountPage);
+      }
+      else{
+        usernameInput.textContent = "Username";
+        usernameInput.className = 'neutral';
+      }
+    })
+  }
 })
 
 var signInButton = document.getElementById('signInButton');
@@ -182,6 +208,9 @@ signInButton.addEventListener('click', function(e){
       signInButton.textContent = 'INVALID USERNAME/PASSWORD';
     }
     else{
+      userName.value = '';
+      password.value = '';
+
       login = document.getElementById('login');
       logout = document.getElementById('logout');
       swap(logout, login);
