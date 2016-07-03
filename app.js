@@ -46,6 +46,13 @@ request('http://api.spitcast.com/api/spot/all', function(error, response,body){
   // }) NEED TO INCLUDE WIND AND WATER TEMP FOR OC ON HOMEPAGE
 });
 
+request('https://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/92625/JSON', function(error, response, body){
+  if(!error && response.statusCode == 200){
+    var data = JSON.parse(body);
+    console.log(data);
+    console.log("Hello");
+  }
+})
 
 
 app.get('/', function(req,res){
@@ -89,23 +96,30 @@ app.post('/createAccount/:username/', function(req,res){
   res.send(matched);
 })
 
-app.use(function(req,res,next){
-  users.forEach(function(user){
-    if(user.username == req.params.username && user.password == req.params.password || req.body.username == user.username && req.body.password == user.password){
-      next();
-    }
-    else(res.sendStatus(401));
-  })
-})
+// app.use(function(req,res,next){
+//   users.forEach(function(user){
+//     if(user.username == req.params.username && user.password == req.params.password || req.body.username == user.username && req.body.password == user.password){
+//       console.log(user);
+//       next();
+//     }
+//     else(res.sendStatus(401));
+//     console.log(JSON.stringify(req.params));
+//     console.log(req.body);
+//   })
+// })
 
 app.post('/login/:username/:password', function(req,res){
   var currentUser;
   users.forEach(function(user){
-    if(req.body.username == user.username){
+    console.log(user);
+    if(req.body.username == user.username && req.body.password == user.password || req.params.username == user.username && req.params.password == user.password){
       currentUser = user.name;
     }
   })
-  res.send(currentUser);
+  if(currentUser != undefined){
+    res.send(currentUser);
+  }
+  else res.sendStatus(401);
 });
 
 app.post('/favorites/add/:location', function(req,res){
