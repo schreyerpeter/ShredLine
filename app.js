@@ -111,7 +111,6 @@ app.post('/createAccount/:username/', function(req,res){
 app.post('/login/:username/:password', function(req,res){
   var currentUser;
   users.forEach(function(user){
-    console.log(user);
     if(req.body.username == user.username && req.body.password == user.password || req.params.username == user.username && req.params.password == user.password){
       currentUser = user.name;
     }
@@ -123,13 +122,38 @@ app.post('/login/:username/:password', function(req,res){
 });
 
 app.post('/favorites/add/:location', function(req,res){
-  var currentUser = req.params.location;
-  var currentBreak;
-  JSON.parse(req.body);
-  console.log(req.body);
+  var currentUser = req.body.currentUser;
+  var currentBreak = req.body.currentBreak;
   users.forEach(function(user){
-    console.log(user);
+    if(user.name.indexOf(currentUser) != -1){
+      if(user.favorites.length == 0){
+        user.favorites.push(currentBreak);
+      }
+      else{
+        for(var i=0; i<user.favorites.length; i++){
+          if(user.favorites[i].indexOf(currentBreak) == -1){
+            user.favorites.push(currentBreak)
+          }
+        }
+      }
+    }
   })
   res.send();
 })
+
+app.delete('/favorites/remove/:location', function(req,res){
+  var currentUser = req.body.currentUser;
+  var currentBreak = req.body.currentBreak;
+  users.forEach(function(user){
+    if(user.name.indexOf(currentUser) != -1){
+      for(var i=0; i<user.favorites.length; i++){
+        if(user.favorites[i].indexOf(currentBreak) != -1){
+          user.favorites.splice(i,1)
+        }
+      }
+    }
+  })
+  res.send();
+})
+
 app.listen(8080);

@@ -91,11 +91,49 @@ login2.addEventListener('click', function(e){
 
 var returnToLogin = document.getElementById('returnToLogin');
 returnToLogin.addEventListener('click', function(e){
+  var userNameInput = document.getElementById('userNameInput');
+  userNameInput.className += " neutral ";
+  userNameInput.textContent = 'Full Name';
+  var userEmailInput = document.getElementById('userEmailInput');
+  userEmailInput.className += " neutral ";
+  userEmailInput.textContent = 'Email';
+  var userPasswordInput = document.getElementById('userPasswordInput');
+  userPasswordInput.className += " neutral ";
+  userPasswordInput.textContent = 'Password';
+  var setUserName = document.getElementById('setUserName').value;
+  var setUserUsername = document.getElementById('setUserUsername').value;
+  var setUserEmail = document.getElementById('setUserEmail').value;
+  var setUserPassword = document.getElementById('setUserPassword').value;
+  setUserName = '';
+  setUserUsername = '';
+  setUserEmail = '';
+  setUserPassword = '';
+  usernameInput.textContent = "Username";
+  usernameInput.className = 'neutral';
   swap(loginPage, createAccountPage);
 })
 
 var returnToLogin2 = document.getElementById('returnToLogin2');
 returnToLogin2.addEventListener('click', function(e){
+  var userNameInput = document.getElementById('userNameInput');
+  userNameInput.className += " neutral ";
+  userNameInput.textContent = 'Full Name';
+  var userEmailInput = document.getElementById('userEmailInput');
+  userEmailInput.className += " neutral ";
+  userEmailInput.textContent = 'Email';
+  var userPasswordInput = document.getElementById('userPasswordInput');
+  userPasswordInput.className += " neutral ";
+  userPasswordInput.textContent = 'Password';
+  var setUserName = document.getElementById('setUserName').value;
+  var setUserUsername = document.getElementById('setUserUsername').value;
+  var setUserEmail = document.getElementById('setUserEmail').value;
+  var setUserPassword = document.getElementById('setUserPassword').value;
+  setUserName = '';
+  setUserUsername = '';
+  setUserEmail = '';
+  setUserPassword = '';
+  usernameInput.textContent = "Username";
+  usernameInput.className = 'neutral';
   swap(loginPage, createAccountPage);
 })
 
@@ -107,11 +145,25 @@ returnToLogin3.addEventListener('click', function(e){
 var createAccountButton1 = document.getElementById('createAccountButton1');
 createAccountButton1.addEventListener('click', function(e){
   swap(createAccountPage, loginPage);
+  var signInButton = document.getElementById('signInButton');
+  var username = document.getElementById('signInUsername');
+  var password = document.getElementById('signInPassword');
+  username.value = '';
+  password.value = '';
+  signInButton.className = 'btn btn-primary';
+  signInButton.textContent = 'SIGN IN';
 })
 
 var createAccountButton2 = document.getElementById('createAccountButton2');
 createAccountButton2.addEventListener('click', function(e){
   swap(createAccountPage, loginPage);
+  var signInButton = document.getElementById('signInButton');
+  var username = document.getElementById('signInUsername');
+  var password = document.getElementById('signInPassword');
+  username.value = '';
+  password.value = '';
+  signInButton.className = 'btn btn-primary';
+  signInButton.textContent = 'SIGN IN';
 })
 
 var createAccountButton = document.getElementById('createAccountButton');
@@ -120,6 +172,7 @@ createAccountButton.addEventListener('click',function(e){
   var setUserUsername = document.getElementById('setUserUsername').value;
   var setUserEmail = document.getElementById('setUserEmail').value;
   var setUserPassword = document.getElementById('setUserPassword').value;
+  var favorites = [];
 
   if(setUserUsername.length < 5){
     var userNameInput = document.getElementById('usernameInput');
@@ -143,13 +196,14 @@ createAccountButton.addEventListener('click',function(e){
   }
   else{
     var data = {
-      "name":setUserName, "username":setUserUsername, "email":setUserEmail, "password":setUserPassword, "id":new Date().getTime()
+      "name":setUserName, "username":setUserUsername, "email":setUserEmail, "password":setUserPassword, "id":new Date().getTime(), "favorites":favorites
     }
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST','/createAccount/:username/');
     xhr.setRequestHeader('Content-type','application/json');
     xhr.send(JSON.stringify(data));
+
 
     xhr.addEventListener('load', function(e){
       var response = JSON.parse(xhr.responseText);
@@ -191,10 +245,10 @@ createAccountButton.addEventListener('click',function(e){
 
 var signInButton = document.getElementById('signInButton');
 signInButton.addEventListener('click', function(e){
-  var userName = document.getElementById('signInUsername');
+  var username = document.getElementById('signInUsername');
   var password = document.getElementById('signInPassword');
   var data = {
-    "username":userName.value, "password":password.value
+    "username":username.value, "password":password.value
   };
   var xhr = new XMLHttpRequest();
   xhr.open('POST','/login/:username/:password');
@@ -202,14 +256,15 @@ signInButton.addEventListener('click', function(e){
   xhr.send(JSON.stringify(data));
 
   xhr.addEventListener('load',function(e){
-    console.log(xhr.responseText);
     if(xhr.status == 401){
       signInButton.className = 'btn btn-danger';
       signInButton.textContent = 'INVALID USERNAME/PASSWORD';
     }
     else{
-      userName.value = '';
+      username.value = '';
       password.value = '';
+      signInButton.className = 'btn btn-primary';
+      signInButton.textContent = 'SIGN IN';
 
       login = document.getElementById('login');
       logout = document.getElementById('logout');
@@ -273,6 +328,8 @@ var addToFavorites = document.getElementById('addToFavorites');
 addToFavorites.addEventListener('click', function(e){
   var currentBreak = document.getElementById('streamTitle').textContent;
   var currentUser = document.getElementById('greetUser').textContent;
+  var index = currentUser.indexOf(' ');
+  currentUser = currentUser.slice(index+1);
   var data = {"currentUser":currentUser, "currentBreak":currentBreak};
   if(currentUser.length == 0){
     swap(loginPage, resultsPage);
@@ -284,13 +341,35 @@ addToFavorites.addEventListener('click', function(e){
     loginDiv.appendChild(notification);
   }
   else{
+    var removeFromFavorites = document.getElementById('removeFromFavorites');
+    var addToFavorites = document.getElementById('addToFavorites');
+    swap(removeFromFavorites, addToFavorites);
     var xhr = new XMLHttpRequest();
     xhr.open("POST",'/favorites/add/:location');
     xhr.setRequestHeader('Content-type','application/json');
     xhr.send(JSON.stringify(data));
 
     xhr.addEventListener('load', function(e){
-      console.log(xhr.responseText);
     })
   }
+})
+
+//Removing from favorites
+var removeFromFavorites = document.getElementById('removeFromFavorites');
+var addToFavorites = document.getElementById('addToFavorites');
+removeFromFavorites.addEventListener('click', function(e){
+  var currentBreak = document.getElementById('streamTitle').textContent;
+  var currentUser = document.getElementById('greetUser').textContent;
+  var index = currentUser.indexOf(' ');
+  currentUser = currentUser.slice(index+1);
+  var data = {"currentUser":currentUser, "currentBreak":currentBreak};
+  swap(addToFavorites, removeFromFavorites);
+  var xhr = new XMLHttpRequest();
+  xhr.open("DELETE", '/favorites/remove/:location');
+  xhr.setRequestHeader('Content-type','application/json');
+  xhr.send(JSON.stringify(data));
+
+  xhr.addEventListener('load', function(e){
+
+  })
 })
