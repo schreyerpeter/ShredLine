@@ -72,6 +72,18 @@ searchButton.addEventListener('click', function(e){
         }
         var spotConditions = document.getElementById('spotConditions');
         spotConditions.textContent = "Conditions: "+location.shape_full;
+        if(location.shape_full == "Poor"){
+          spotConditions.style.color = 'red';
+        }
+        else if(location.shape_full == "Poor-Fair"){
+          spotConditions.style.color = 'orange';
+        }
+        else if(location.shape_full == "Fair"){
+          spotConditions.style.color = 'blue';
+        }
+        else{
+          spotConditions.style.color = 'green';
+        }
         swap(resultsPage, homePage);
         // makeMap(location);
         var removeFromFavorites = document.getElementById('removeFromFavorites');

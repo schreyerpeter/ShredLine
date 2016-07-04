@@ -51,8 +51,57 @@
       </div>
     </nav>
     <div class="row">
-      <div class="col-lg-6 col-lg-offset-1">
-        <iframe id='homeFrame' width="640" height="360" src="" frameborder="0" scrolling="no" allowfullscreen></iframe><div style="margin: 10px 0px;"><a id="homeFrameText" href="http://www.surfline.com" target="_blank"></a></div>
+      <div id='homeFrameDiv' class="col-lg-6">
+        <iframe id='homeFrame' width="640" height="360" src="http://e.cdn-surfline.com/syndication/embed/v1/player.html?id=8366" frameborder="0" scrolling="no" allowfullscreen></iframe><div style="margin: 10px 0px;"><a id="homeFrameText" href="http://www.surfline.com" target="_blank"><p href="http://www.surfline.com/surf-report/teahupoo-tahiti_8366/" target="_blank" title="Teahupoo Surf Report and HD Surf Cam">Today's Legendary Break: Teahupoo</p></a></div>
+      </div>
+      <div id="carousel" class="carousel slide col-lg-5" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carousel" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel" data-slide-to="1"></li>
+          <li data-target="#carousel" data-slide-to="2"></li>
+          <li data-target="#carousel" data-slide-to="3"></li>
+          <li data-target="#carousel" data-slide-to="4"></li>
+        </ol>
+
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="weather.jpg" alt="...">
+            <div class="carousel-caption">
+              <h3>Al Gore was right!</h3>
+            </div>
+          </div>
+          <div class="item">
+            <img src="grom.jpg" alt="...">
+            <div class="carousel-caption">
+              <h3>Look at this grom getting SHACKED</h3>
+            </div>
+          </div>
+          <div class="item">
+            <img src="wet.jpg" alt="...">
+            <div class="carousel-caption">
+              <h3>Totes tubular</h3>
+            </div>
+          </div>
+          <div class="item">
+            <img src="muddy.jpg" alt="...">
+            <div class="carousel-caption">
+              <h3>Chocolate waves</h3>
+            </div>
+          </div>
+          <div class="item">
+            <img src="whale.jpg" alt="...">
+            <div class="carousel-caption">
+              <h3>Feel better soon</h3>
+            </div>
+          </div>
+        </div>
+
+        <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
       </div>
     </div>
   </div>
@@ -87,12 +136,11 @@
         </div>
       </div>
       <div align = 'center' class="col-lg-4">
+        <div id="map"></div>
         <h2 id='spotSize'></h2>
         <h3 id='spotConditions'></h3>
         <button id='addToFavorites' class='btn btn-primary' type="button" name="button">Add to favorites <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
         <button id='removeFromFavorites' class='hidden btn btn-danger' type="button" name="button">Remove from Favorites <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
-        <div id="map">
-        </div>
       </div>
     </div>
   </div>
