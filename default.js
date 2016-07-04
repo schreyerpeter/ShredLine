@@ -28,6 +28,7 @@ var search = document.getElementById('search');
 var homePage = document.getElementById('homePage');
 var resultsPage = document.getElementById('resultsPage');
 
+var currentBreak;
 searchButton.addEventListener('click', function(e){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/streams');
@@ -36,9 +37,11 @@ searchButton.addEventListener('click', function(e){
 
   xhr.addEventListener("load",function(){
     var response = JSON.parse(xhr.responseText);
+    console.log(response);
 
-    response.forEach(function(location){
+    response.locations.forEach(function(location){
       if(location.name.toLowerCase().indexOf(search.value.toLowerCase())!==-1 && search.value.length>1){
+        currentBreak = location.name;
         var stream = document.getElementById('stream');
         var frame = document.getElementById('frame');
         frame.setAttribute('src',location.url);
@@ -64,6 +67,24 @@ searchButton.addEventListener('click', function(e){
         spotConditions.textContent = "Conditions: "+location.shape_full;
         swap(resultsPage, homePage);
         // makeMap(location);
+        var removeFromFavorites = document.getElementById('removeFromFavorites');
+        var addToFavorites = document.getElementById('addToFavorites');
+        var currentUser = document.getElementById('greetUser').textContent;
+        var index = currentUser.indexOf(' ');
+        currentUser = currentUser.slice(index+1);
+
+        response.people.forEach(function(person){
+          if(person.name.indexOf(currentUser)!= -1){
+            for(var i=0; i<person.favorites.length; i++){
+              if(person.favorites[i] == location.name){
+                console.log('match');
+                swap(removeFromFavorites, addToFavorites);
+                break;
+              }
+              else swap(addToFavorites,removeFromFavorites);
+            }
+          }
+        })
       }
     })
   })

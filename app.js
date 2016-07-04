@@ -49,8 +49,6 @@ request('http://api.spitcast.com/api/spot/all', function(error, response,body){
 request('https://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/92625/JSON', function(error, response, body){
   if(!error && response.statusCode == 200){
     var data = JSON.parse(body);
-    console.log(data);
-    console.log("Hello");
   }
 })
 
@@ -69,10 +67,15 @@ app.get('/default.js', function(req,res){
 
 app.get('/streams', function(req,res){
   var locations = [];
+  var people = [];
+  var data = {locations,people};
   cams.forEach(function(location){
     locations.push(location);
   })
-  res.send(locations);
+  users.forEach(function(user){
+    people.push(user);
+  })
+  res.send(data);
 })
 
 app.post('/createAccount/:username/', function(req,res){
