@@ -3,13 +3,20 @@ function swap(showPage, hidePage){
   showPage.className = showPage.className.replace(/hidden/g, " ");
 }
 
-// function makeMap(location){
-//   var newMap = document.getElementById('map');
-//   var map = new google.maps.Map(newMap, {
-//     center: {lat: location.latitude, lng: location.longitude},
-//     zoom: 8
-//   });
-// };
+function initMap(location) {
+  var myPosition = {lat: location.latitude, lng: location.longitude};
+  // Create a map object and specify the DOM element for display.
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: myPosition,
+    scrollwheel: false,
+    zoom: 14
+  });
+  var marker = new google.maps.Marker({
+    map: map,
+    position: myPosition,
+    title: 'Shred Here'
+  });
+}
 
 document.addEventListener('load', function(e){
   var xhr = new XMLHttpRequest();
@@ -77,7 +84,6 @@ searchButton.addEventListener('click', function(e){
           if(person.name.indexOf(currentUser)!= -1){
             for(var i=0; i<person.favorites.length; i++){
               if(person.favorites[i] == location.name){
-                console.log('match');
                 swap(removeFromFavorites, addToFavorites);
                 break;
               }
@@ -85,6 +91,7 @@ searchButton.addEventListener('click', function(e){
             }
           }
         })
+        initMap(location);
       }
     })
   })

@@ -89,14 +89,10 @@
       <div align = 'center' class="col-lg-4">
         <h2 id='spotSize'></h2>
         <h3 id='spotConditions'></h3>
-        <!-- <div id="map">
-        </div> -->
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2 col-xs-offset-1">
         <button id='addToFavorites' class='btn btn-primary' type="button" name="button">Add to favorites <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
-        <button id='removeFromFavorites' class='hidden btn btn-warning' type="button" name="button"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true">Remove from Favorites</span></button>
+        <button id='removeFromFavorites' class='hidden btn btn-danger' type="button" name="button">Remove from Favorites <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+        <div id="map">
+        </div>
       </div>
     </div>
   </div>
@@ -183,6 +179,7 @@
       </div>
     </div>
   </div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARTtB4yLVDM1J6AWp0JmaD9f3in_sqXmM&callback=initMap" async defer></script>
   <script src="default.js" charset="utf-8"></script>
 </body>
 </html>
