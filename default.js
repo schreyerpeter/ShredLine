@@ -5,7 +5,6 @@ function swap(showPage, hidePage){
 
 function initMap(location) {
   var myPosition = {lat: location.latitude, lng: location.longitude};
-  // Create a map object and specify the DOM element for display.
   var map = new google.maps.Map(document.getElementById('map'), {
     center: myPosition,
     scrollwheel: false,
@@ -16,6 +15,32 @@ function initMap(location) {
     position: myPosition,
     title: 'Shred Here'
   });
+}
+//Show Time on Page
+setInterval(function showTime(){
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET','/time');
+  xhr.setRequestHeader('Content-type','application/json');
+  xhr.send();
+
+  xhr.addEventListener('load', function(e){
+    time.textContent = xhr.responseText;
+  })
+  row.appendChild(time);
+}, 999);
+
+//Show UV index graph
+function showUV(){
+  var uvDiv = document.getElementById('uvPlot');
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/uv');
+  xhr.setRequestHeader('Content-type','application/json');
+  xhr.send();
+
+  xhr.addEventListener('load', function(e){
+    var data = xhr.responseText;
+    console.log(data.url);
+  })
 }
 
 document.addEventListener('load', function(e){
@@ -55,7 +80,7 @@ searchButton.addEventListener('click', function(e){
         var homeFrame = document.getElementById('homeFrame');
         homeFrame.setAttribute('src',location.url);
         var homeFrameText = document.getElementById('homeFrameText');
-        homeFrameText.textContent = "Your daily cam: "+location.name;
+        homeFrameText.textContent = "Your most recently viewed cam: "+location.name;
         homeFrameText.setAttribute('align','center');
         var streamTitle = document.getElementById('streamTitle');
         streamTitle.textContent = location.name;
@@ -410,6 +435,5 @@ removeFromFavorites.addEventListener('click', function(e){
   xhr.send(JSON.stringify(data));
 
   xhr.addEventListener('load', function(e){
-
   })
 })

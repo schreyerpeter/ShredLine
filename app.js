@@ -7,6 +7,9 @@ var bodyParser = require('body-parser').json();
 app.use(bodyParser);
 
 app.use(express.static("Pictures"));
+var moment = require('moment');
+
+var plotly = require('plotly')("pschreyer", "ysr8lsaz99");
 
 var cams = require('./cams.js');
 var users = require('./users.js');
@@ -46,13 +49,6 @@ request('http://api.spitcast.com/api/spot/all', function(error, response,body){
   // }) NEED TO INCLUDE WIND AND WATER TEMP FOR OC ON HOMEPAGE
 });
 
-request('https://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/92625/JSON', function(error, response, body){
-  if(!error && response.statusCode == 200){
-    var data = JSON.parse(body);
-  }
-})
-
-
 app.get('/', function(req,res){
   res.sendFile(__dirname + '/index.html')
 });
@@ -83,7 +79,6 @@ app.post('/createAccount/:username/', function(req,res){
   users.forEach(function(user){
     if(req.params.username == user.username || req.body.username == user.username){
       matched = true;
-      console.log('Match');
     }
     if (matched == false){
       var userList = {};
@@ -92,7 +87,6 @@ app.post('/createAccount/:username/', function(req,res){
       userList.email = req.body.email;
       userList.password = req.body.password;
       userList.id = req.body.id;
-      console.log('No match');
       users.push(userList);
     }
   })
@@ -157,6 +151,39 @@ app.delete('/favorites/remove/:location', function(req,res){
     }
   })
   res.send();
+})
+
+app.get('/time', function(req,res){
+  var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+  res.send(time);
+})
+
+app.get('/uv', function(req,res){
+  request('https://iaspub.epa.gov/enviro/efservice/getEnvirofactsUVHOURLY/ZIP/92625/JSON', function(error, response, body){
+    if(!error && response.statusCode == 200){
+      var data = JSON.parse(body);
+      var x = [];
+      var y = [];
+      data.forEach(function(datum){
+        var index = datum.DATE_TIME.indexOf(' ');
+        datum.DATE_TIME = datum.DATE_TIME.slice(index);
+        x.push(datum.DATE_TIME);
+        y.push(datum.UV_VALUE);
+      })
+      var graphData = [
+        {
+          x,
+          y,
+          type: "scatter"
+        }
+      ];
+      var graphOptions = {filename: "date-axes", fileopt: "overwrite"};
+      plotly.plot(graphData, graphOptions, function (err, msg) {
+        console.log(msg.url);
+        res.send(msg.url);
+      })
+    }
+  })
 })
 
 app.listen(8080);

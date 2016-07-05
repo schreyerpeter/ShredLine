@@ -3,6 +3,7 @@ html{
 }
 body{
   height: 100%;
+  background-color:#F5F5F5;
 }
 .hidden{
   display: none;
@@ -20,10 +21,10 @@ body{
   margin-top: 60px;
 }
 #map{
-  width: 300px;
-  height: 300px;
+  width: 450px;
+  height: 220px;
   background-color: grey;
-  margin-top: 20px;
+  margin-left:15px;
 }
 #loginPage, #createAccountPage{
   background-image: url('Z.jpg');
@@ -62,4 +63,10 @@ body{
 }
 #notification{
   text-align: center;
+}
+#carousel{
+  margin-top: 110px;
+}
+#homeFrameDiv{
+  margin-left: 60px;
 }
