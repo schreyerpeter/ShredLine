@@ -29,10 +29,6 @@
                 <li><a href="#">Orange</a></li>
                 <li><a href="#">San Diego</a></li>
                 <li><a href="#">Los Angeles</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
               </ul>
             </li>
           </ul>
@@ -95,7 +91,6 @@
             </div>
           </div>
         </div>
-
         <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
@@ -103,12 +98,25 @@
           <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
       </div>
-      <h2 align='center' id='time'></h2>
     </div>
-
-    <div id='uvDiv'>
-      <div id='uvPlot'>
-        <iframe width="700" height="400" frameborder="0" scrolling="no" src="https://plot.ly/~pschreyer/0.embed"></iframe>
+    <div class='row'>
+      <div class="panel panel-primary">
+        <div align='center' class="panel panel-heading">
+          <h4>Know before you go  <i class="glyphicon glyphicon-send" aria-hidden="true"> </i></h4>
+        </div>
+        <div class="panel panel-body">
+          <div class='col-lg-5' id='tideDiv'>
+            <div id='tidePlot'>
+              <iframe id='tideFrame' width="600" height="400" frameborder="0" scrolling="no" src="https://plot.ly/~pschreyer/6.embed"></iframe>
+            </div>
+          </div>
+          <div class='col-lg-6' id='uvDiv'>
+            <div id='uvPlot'>
+              <iframe id='uvFrame' width="700" height="400" frameborder="0" scrolling="no" src="https://plot.ly/~pschreyer/2.embed"></iframe>
+              <h2 align='center' id='time'></h2>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -136,7 +144,7 @@
     <div class="row">
       <h1 align='center' id="streamTitle"></h1>
     </div>
-    <div class="row">
+    <div id='resultsRow' class="row">
       <div class="col-lg-6 col-lg-offset-1">
         <div id="stream">
           <iframe id='frame' width="640" height="360" src="" frameborder="0" scrolling="no" allowfullscreen></iframe><div style="margin: 10px 0px;"><a href="http://www.surfline.com" target="_blank"> Live HD Surf Cam. Check out more Surf Cams at Surfline.com</a></div>

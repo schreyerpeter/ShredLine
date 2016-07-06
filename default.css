@@ -24,7 +24,6 @@ body{
   width: 450px;
   height: 220px;
   background-color: grey;
-  margin-left:15px;
 }
 #loginPage, #createAccountPage{
   background-image: url('Z.jpg');
@@ -49,7 +48,7 @@ body{
   margin-top: 40px;
 }
 #homeFrame{
-  margin-top: 110px;
+  margin-top: 70px;
   margin-left: -25px;
 }
 .valid{
@@ -65,8 +64,25 @@ body{
   text-align: center;
 }
 #carousel{
-  margin-top: 110px;
+  margin-top: 70px;
 }
 #homeFrameDiv{
   margin-left: 60px;
+}
+#uvDiv{
+  margin-left: 40px;
+}
+#tideDiv{
+  margin-left: -30px;
+  margin-right: 20px;
+}
+#time{
+  margin-top: 30px;
+}
+.carousel-indicators{
+  margin-bottom: 60px;
+}
+#spotSize, #spotConditions{
+  width: 450px;
+  background-color: grey;
 }

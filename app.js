@@ -177,11 +177,36 @@ app.get('/uv', function(req,res){
           type: "scatter"
         }
       ];
-      var graphOptions = {filename: "date-axes", fileopt: "overwrite"};
-      plotly.plot(graphData, graphOptions, function (err, msg) {
+      var layout = {title:"Hourly UV Index for Orange County", yaxis:{title:"UV Intensity"}}
+      plotly.plot(graphData, layout, function (err, msg) {
         console.log(msg.url);
         res.send(msg.url);
       })
+    }
+  })
+})
+
+app.get('/tide', function(req,res){
+  request('http://api.spitcast.com/api/county/tide/orange-county/', function(error, response, body){
+    if(!error && response.statusCode == 200){
+      var data = JSON.parse(body);
+      var x = [];
+      var y = [];
+      data.forEach(function(datum){
+        x.push(datum.hour);
+        y.push(datum.tide);
+      })
+      var graphData = [
+        {
+          x,
+          y,
+          type: "bar"
+        }
+      ]
+      var graphOptions = {title:"Tide Height Orange County", yaxis:{title:"Height (inches)"}};
+      plotly.plot(graphData, graphOptions, function (err, msg) {
+        res.send(msg);
+      });
     }
   })
 })

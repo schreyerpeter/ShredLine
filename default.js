@@ -26,7 +26,7 @@ setInterval(function showTime(){
   xhr.addEventListener('load', function(e){
     time.textContent = xhr.responseText;
   })
-  row.appendChild(time);
+  carousel.appendChild(time);
 }, 999);
 
 //Show UV index graph
@@ -39,7 +39,19 @@ function showUV(){
 
   xhr.addEventListener('load', function(e){
     var data = xhr.responseText;
-    console.log(data.url);
+  })
+}
+
+//Show tide graph
+function tide(){
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET",'/tide');
+  xhr.setRequestHeader('Content-type','application/json');
+  xhr.send();
+
+  xhr.addEventListener('load', function(e){
+    var data = xhr.responseText;
+    console.log(data);
   })
 }
 
@@ -87,27 +99,35 @@ searchButton.addEventListener('click', function(e){
         var spotSize = document.getElementById('spotSize');
         spotSize.textContent = "Wave height: "+Math.floor(location.size_ft)+"-"+Math.ceil(location.size_ft) + " ft";
         if(location.size<3){
-          spotSize.style.color = 'green';
+          spotSize.style.backgroundColor = 'green';
+          spotSize.style.color = 'white';
         }
         else if(location.size>=3 && location.size<6){
-          spotSize.style.color = 'orange';
+          spotSize.style.backgroundColor = 'orange';
+          spotSize.style.color = 'white';
         }
         else{
-          spotSize.style.color = 'red';
+          spotSize.style.backgroundColor = 'red';
+          spotSize.style.color = 'white';
         }
         var spotConditions = document.getElementById('spotConditions');
         spotConditions.textContent = "Conditions: "+location.shape_full;
         if(location.shape_full == "Poor"){
-          spotConditions.style.color = 'red';
+          spotConditions.style.backgroundColor = 'red';
+          spotConditions.style.color = 'white';
         }
         else if(location.shape_full == "Poor-Fair"){
-          spotConditions.style.color = 'orange';
+          spotConditions.style.backgroundColor = 'orange';
+          spotConditions.style.color = 'white';
+
         }
         else if(location.shape_full == "Fair"){
-          spotConditions.style.color = 'blue';
+          spotConditions.style.backgroundColor = 'blue';
+          spotConditions.style.color = 'white';
         }
         else{
-          spotConditions.style.color = 'green';
+          spotConditions.style.backgroundColor = 'green';
+          spotConditions.style.color = 'white';
         }
         swap(resultsPage, homePage);
         // makeMap(location);
