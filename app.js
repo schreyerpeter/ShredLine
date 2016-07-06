@@ -1,14 +1,12 @@
 var express = require('express');
-var request = require('request');
 var app = express();
+app.use(express.static("./Pictures"));
+var request = require('request');
 var cookieParser = require('cookie-parser')();
 app.use(cookieParser);
 var bodyParser = require('body-parser').json();
 app.use(bodyParser);
-
-app.use(express.static("Pictures"));
 var moment = require('moment');
-
 var plotly = require('plotly')("pschreyer", "ysr8lsaz99");
 
 var cams = require('./cams.js');
@@ -72,6 +70,27 @@ app.get('/streams', function(req,res){
     people.push(user);
   })
   res.send(data);
+})
+
+app.get('/drop', function(req,res){
+  var locations = [];
+  var people = [];
+  var data = {locations,people};
+  cams.forEach(function(location){
+    locations.push(location);
+  })
+  users.forEach(function(user){
+    people.push(user);
+  })
+  res.send(data);
+})
+
+app.get('/spotNames', function(req,res){
+  var spotName = [];
+  cams.forEach(function(cam){
+    spotName.push(cam.name);
+  })
+  res.send(spotName);
 })
 
 app.post('/createAccount/:username/', function(req,res){

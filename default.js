@@ -67,10 +67,107 @@ document.addEventListener('load', function(e){
   })
 });
 
-var searchButton = document.getElementById('searchButton');
-var search = document.getElementById('search');
-var homePage = document.getElementById('homePage');
-var resultsPage = document.getElementById('resultsPage');
+
+breakDrop.addEventListener('click',function(e){
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/spotNames');
+  xhr.setRequestHeader('Content-type','application/json');
+  xhr.send();
+
+  xhr.addEventListener('load',function(){
+    while(breakDropList.children.length>2){
+      breakDropList.removeChild(breakDropList.thirdChild)
+    }
+    var names = JSON.parse(xhr.responseText);
+    for (var i = 0; i < names.length; i++) {
+      var newSpot = document.createElement('li');
+      var newSpotName = document.createElement('a');
+      newSpotName.textContent = names[i];
+      newSpot.appendChild(newSpotName);
+      breakDropList.appendChild(newSpot);
+    }
+  })
+})
+
+breakDropList.addEventListener('click', function(e){
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET','/drop');
+  xhr.setRequestHeader('Content-type', 'application/json');
+  var searchValue = e.target.textContent;
+  xhr.send();
+
+  xhr.addEventListener("load",function(){
+    var response = JSON.parse(xhr.responseText);
+    console.log(response);
+    response.locations.forEach(function(location){
+      if(searchValue == location.name){
+        currentBreak = location.name;
+        var stream = document.getElementById('stream');
+        var frame = document.getElementById('frame');
+        frame.setAttribute('src',location.url);
+        var homeFrame = document.getElementById('homeFrame');
+        homeFrame.setAttribute('src',location.url);
+        var homeFrameText = document.getElementById('homeFrameText');
+        homeFrameText.textContent = "Your most recently viewed cam: "+location.name;
+        homeFrameText.setAttribute('align','center');
+        var streamTitle = document.getElementById('streamTitle');
+        streamTitle.textContent = location.name;
+        var spotSize = document.getElementById('spotSize');
+        spotSize.textContent = "Wave height: "+Math.floor(location.size_ft)+"-"+Math.ceil(location.size_ft) + " ft";
+        if(location.size<3){
+          spotSize.style.backgroundColor = 'green';
+          spotSize.style.color = 'white';
+        }
+        else if(location.size>=3 && location.size<6){
+          spotSize.style.backgroundColor = 'orange';
+          spotSize.style.color = 'white';
+        }
+        else{
+          spotSize.style.backgroundColor = 'red';
+          spotSize.style.color = 'white';
+        }
+        var spotConditions = document.getElementById('spotConditions');
+        spotConditions.textContent = "Conditions: "+location.shape_full;
+        if(location.shape_full == "Poor"){
+          spotConditions.style.backgroundColor = 'red';
+          spotConditions.style.color = 'white';
+        }
+        else if(location.shape_full == "Poor-Fair"){
+          spotConditions.style.backgroundColor = 'orange';
+          spotConditions.style.color = 'white';
+
+        }
+        else if(location.shape_full == "Fair"){
+          spotConditions.style.backgroundColor = 'blue';
+          spotConditions.style.color = 'white';
+        }
+        else{
+          spotConditions.style.backgroundColor = 'green';
+          spotConditions.style.color = 'white';
+        }
+        swap(resultsPage, homePage);
+        var removeFromFavorites = document.getElementById('removeFromFavorites');
+        var addToFavorites = document.getElementById('addToFavorites');
+        var currentUser = document.getElementById('greetUser').textContent;
+        var index = currentUser.indexOf(' ');
+        currentUser = currentUser.slice(index+1);
+
+        response.people.forEach(function(person){
+          if(person.name.indexOf(currentUser)!= -1){
+            for(var i=0; i<person.favorites.length; i++){
+              if(person.favorites[i] == location.name){
+                swap(removeFromFavorites, addToFavorites);
+                break;
+              }
+              else swap(addToFavorites,removeFromFavorites);
+            }
+          }
+        })
+        initMap(location);
+      }
+    })
+  })
+})
 
 var currentBreak;
 searchButton.addEventListener('click', function(e){
