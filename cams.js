@@ -8,4 +8,11 @@ module.exports = [
   {"name":"56th Street", "url":"http://e.cdn-surfline.com/syndication/embed/v1/player.html?id=43103"},
   {"name":"Goldenwest", "url":"http://e.cdn-surfline.com/syndication/embed/v1/player.html?id=4870"},
   {"name":"Seal Beach Pier", "url":"http://e.cdn-surfline.com/syndication/embed/v1/player.html?id=4217"},
+  {"name":"Salt Creek", "url":"http://e.cdn-surfline.com/syndication/embed/v1/player.html?id=4233"},
+  {"name":"Doheny", "url":"http://e.cdn-surfline.com/syndication/embed/v1/player.html?id=4848"},
+  {"name":"Thalia", "url":"http://e.cdn-surfline.com/syndication/embed/v1/player.html?id=4235"},
+  {"name":"San Clemente Pier", "url":"http://e.cdn-surfline.com/syndication/embed/v1/player.html?id=4843"},
+  {"name":"Upper Trestles", "url":"http://e.cdn-surfline.com/syndication/embed/v1/player.html?id=4738"},
+  {"name":"Lower Trestles", "url":"http://e.cdn-surfline.com/syndication/embed/v1/player.html?id=4740"},
+  {"name":"San Onofre", "url":"http://e.cdn-surfline.com/syndication/embed/v1/player.html?id=109918"},
 ]
