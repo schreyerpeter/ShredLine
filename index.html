@@ -124,151 +124,160 @@
       </div>
     </div>
   </div>
-  <div id='resultsPage' class="row hidden">
-    <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a id = "spotTitle" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a id="greetUser2"></a></li>
-            <li><a class="hidden" id="logout2" href="#">Log Out <span id="loginSpan" class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
-            <li><a id="login2" href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="row">
-      <h1 align='center' id="streamTitle"></h1>
-    </div>
-    <div id='resultsRow' class="row">
-      <div class="col-lg-6 col-lg-offset-1">
-        <div id="stream">
-          <iframe id='frame' width="640" height="360" src="" frameborder="0" scrolling="no" allowfullscreen></iframe><div style="margin: 10px 0px;"><a href="http://www.surfline.com" target="_blank"> Live HD Surf Cam. Check out more Surf Cams at Surfline.com</a></div>
-        </div>
-      </div>
-      <div align = 'center' class="col-lg-4">
-        <div id="map"></div>
-        <h2 id='spotSize'></h2>
-        <h3 id='spotConditions'></h3>
-        <button id='addToFavorites' class='btn btn-primary' type="button" name="button">Add to favorites <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
-        <button id='removeFromFavorites' class='hidden btn btn-danger' type="button" name="button">Remove from Favorites <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
-      </div>
-    </div>
-  </div>
-  <div id='loginPage' class="row hidden">
-    <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a id = "loginTitle" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a id="createAccountButton1" href="#">Create Account <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div id="loginBox" class="row">
-      <div id="loginDiv" class="col-lg-6">
-        <h1 id='signInTitle'>Sign in</h1>
-        <h4>Need an account? <a id="createAccountButton2" href="#">Create account</a></h4>
-        <form>
-          <fieldset class="form-group">
-            <label for="formGroupExampleInput">Username</label>
-            <input type="text" class="form-control" id="signInUsername" placeholder="ShakaBrah">
-          </fieldset>
-          <fieldset class="form-group">
-            <label for="formGroupExampleInput2">Password</label>
-            <input type="password" class="form-control" id="signInPassword" placeholder="*******">
-            <button id="signInButton" class='btn btn-primary' type="button" name="button">SIGN IN</button>
-          </fieldset>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div id='createAccountPage' class="row hidden">
-    <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a id = "createAccountTitle" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a id="returnToLogin" href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div id="createAccountBox" class="row">
-      <div id="createAccountDiv" class="col-lg-6">
-        <h1>Create Account</h1>
-        <h4>Already have an account? <a id="returnToLogin2" href="#">Sign In</a></h4>
-        <div class="row">
-          <div class="col-lg-6">
-            <form>
-              <fieldset class="form-group">
-                <label id='userNameInput' for="UserNameInput">Full Name</label>
-                <input type="text" class="form-control" id="setUserName" placeholder="Kelly Slater">
-              </fieldset>
-            </form>
+  <div class="container-fluid">
+    <div id='resultsPage' class="row hidden">
+      <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a id = "spotTitle" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
           </div>
-          <div class="col-lg-6">
-            <form>
-              <fieldset>
-                <label id="usernameInput" for="lastNameInput">Username</label>
-                <input type="text" class="form-control" id="setUserUsername" placeholder="KellyGetsSoPitted">
-              </fieldset>
-            </form>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a id="greetUser2"></a></li>
+              <li><a class="hidden" id="logout2" href="#">Log Out <span id="loginSpan" class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
+              <li><a id="login2" href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+            </ul>
           </div>
         </div>
-        <form>
-          <fieldset class="form-group">
-            <label id="userEmailInput" for="formGroupEmail">Email</label>
-            <input type="text" class="form-control" id="setUserEmail" placeholder="example@example.com">
-          </fieldset>
-        </form>
-        <form>
-          <fieldset>
-            <label id ='userPasswordInput' for="formGroupPassword">Password</label>
-            <input type="password" class="form-control" id="setUserPassword" placeholder="*******">
-            <button id="createAccountButton" class='btn btn-primary' type="button" name="button">CREATE ACCOUNT</button>
-            <h5>By clicking "Create Account" you agree to the ShredLine Terms of use and privacy policy.</h5>
-          </fieldset>
-        </form>
+      </nav>
+      <div class="row">
+        <h1 align='center' id="streamTitle"></h1>
+      </div>
+      <div id='resultsRow' class="row">
+        <div class="col-lg-6 col-lg-offset-1">
+          <div id="stream">
+            <iframe id='frame' width="640" height="360" src="" frameborder="0" scrolling="no" allowfullscreen></iframe><div style="margin: 10px 0px;"><a href="http://www.surfline.com" target="_blank"> Live HD Surf Cam. Check out more Surf Cams at Surfline.com</a></div>
+          </div>
+        </div>
+        <div align = 'center' class="col-lg-4">
+          <div id="map"></div>
+          <h2 id='spotSize'></h2>
+          <h3 id='spotConditions'></h3>
+          <button id='addToFavorites' class='btn btn-primary' type="button" name="button">Add to favorites <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+          <button id='removeFromFavorites' class='hidden btn btn-danger' type="button" name="button">Remove from Favorites <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+        </div>
       </div>
     </div>
   </div>
-  <div id='favoritesPage' class="row hidden">
-    <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
-      <div class="container-fluid">
+  <div class="container-fluid">
+
+
+    <div id='loginPage' class="row hidden">
+      <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a id = "loginTitle" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a id="createAccountButton1" href="#">Create Account <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div id="loginBox" class="row">
+        <div id="loginDiv" class="col-lg-6">
+          <h1 id='signInTitle'>Sign in</h1>
+          <h4>Need an account? <a id="createAccountButton2" href="#">Create account</a></h4>
+          <form>
+            <fieldset class="form-group">
+              <label for="formGroupExampleInput">Username</label>
+              <input type="text" class="form-control" id="signInUsername" placeholder="ShakaBrah">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="formGroupExampleInput2">Password</label>
+              <input type="password" class="form-control" id="signInPassword" placeholder="*******">
+              <button id="signInButton" class='btn btn-primary' type="button" name="button">SIGN IN</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+
+    <div id='createAccountPage' class="row hidden">
+      <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a id = "createAccountTitle" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a id="returnToLogin" href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div id="createAccountBox" class="row">
+        <div id="createAccountDiv" class="col-lg-6">
+          <h1>Create Account</h1>
+          <h4>Already have an account? <a id="returnToLogin2" href="#">Sign In</a></h4>
+          <div class="row">
+            <div class="col-lg-6">
+              <form>
+                <fieldset class="form-group">
+                  <label id='userNameInput' for="UserNameInput">Full Name</label>
+                  <input type="text" class="form-control" id="setUserName" placeholder="Kelly Slater">
+                </fieldset>
+              </form>
+            </div>
+            <div class="col-lg-6">
+              <form>
+                <fieldset>
+                  <label id="usernameInput" for="lastNameInput">Username</label>
+                  <input type="text" class="form-control" id="setUserUsername" placeholder="KellyGetsSoPitted">
+                </fieldset>
+              </form>
+            </div>
+          </div>
+          <form>
+            <fieldset class="form-group">
+              <label id="userEmailInput" for="formGroupEmail">Email</label>
+              <input type="text" class="form-control" id="setUserEmail" placeholder="example@example.com">
+            </fieldset>
+          </form>
+          <form>
+            <fieldset>
+              <label id ='userPasswordInput' for="formGroupPassword">Password</label>
+              <input type="password" class="form-control" id="setUserPassword" placeholder="*******">
+              <button id="createAccountButton" class='btn btn-primary' type="button" name="button">CREATE ACCOUNT</button>
+              <h5>By clicking "Create Account" you agree to the ShredLine Terms of use and privacy policy.</h5>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id='favoritesContainer' class="container-fluid">
+    <div id='favoritesPage' class="row hidden">
+      <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
         <div class="navbar-header">
           <a id = "spotTitle2" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a id="greetUser3"></a></li>
-            <li><a id="logout3" href="#">Log Out <span id="loginSpan" class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
+            <li><a id="logout3" href="#">Log Out <span id="loginSpan" class="glyphicon glyphicon-log-out" aria-hidden="true"></span> </a> </li>
           </ul>
         </div>
+      </nav>
+      <div class="row">
+        <h1 id='favoritesTitle' align='center'>Favorites</h1>
       </div>
-    </nav>
-    <div class="row">
-      <h1 align='center' id="streamTitle"></h1>
-    </div>
-    <div class="row">
-      <h1 id='favoritesTitle' align='center'>Favorites</h1>
+      <div class="row">
+        <div class="col-lg-12" id="favoritesContent">
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARTtB4yLVDM1J6AWp0JmaD9f3in_sqXmM&callback=initMap" async defer></script>
-<script src="default.js" charset="utf-8"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARTtB4yLVDM1J6AWp0JmaD9f3in_sqXmM&callback=initMap" async defer></script>
+  <script src="default.js" charset="utf-8"></script>
 </body>
 </html>

@@ -1,16 +1,13 @@
-html{
-  height: 100%;
-}
+html, body { overflow-x: hidden; }
 body{
-  height: 100%;
   background-color:#F5F5F5;
 }
 .hidden{
   display: none;
 }
-/*#navBar{
-  top: 200px;
-}*/
+#navBar{
+  width: 100%;
+}
 #title{
   font-size: 20px;
 }
@@ -94,12 +91,20 @@ body{
   margin-top: 8px;
 }
 #favoritesPage{
-  width: 100%;
-  height: auto;
   background-image: url('sunset.jpg');
-  background-size: 1920px 1080px;
+  background-size: 150% 150%;
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: left center;
 }
 #favoritesTitle{
+  margin-top: 60px;
   color: white;
+}
+#favoritesContent{
+  height: 100%;
+  width: 100%;
+}
+#favoritesContainer{
+  position: static;
 }
