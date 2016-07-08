@@ -8,9 +8,9 @@ body{
 .hidden{
   display: none;
 }
-#navBar{
+/*#navBar{
   top: 200px;
-}
+}*/
 #title{
   font-size: 20px;
 }
@@ -27,7 +27,7 @@ body{
 }
 #loginPage, #createAccountPage{
   background-image: url('Z.jpg');
-  background-size: 100% 100%;
+  background-size: 100% 120%;
   background-repeat: no-repeat;
 }
 #loginDiv, #createAccountDiv{
@@ -85,4 +85,21 @@ body{
 #spotSize, #spotConditions{
   width: 450px;
   background-color: grey;
+}
+#breakDropList{
+  overflow-y: scroll;
+  max-height: 150px;
+}
+#viewFavorites{
+  margin-top: 8px;
+}
+#favoritesPage{
+  width: 100%;
+  height: auto;
+  background-image: url('sunset.jpg');
+  background-size: 1920px 1080px;
+  background-repeat: no-repeat;
+}
+#favoritesTitle{
+  color: white;
 }
