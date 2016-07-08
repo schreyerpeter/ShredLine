@@ -13,6 +13,8 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
     "json-parser": "^1.1.5",
-    "request": "^2.72.0"
+    "moment": "^2.14.1",
+    "request": "^2.72.0",
+    "serve-favicon": "^2.3.0"
   }
 }
