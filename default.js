@@ -1,3 +1,5 @@
+var currentUser = '';
+
 function swap(showPage, hidePage){
   hidePage.className += ' hidden ';
   showPage.className = showPage.className.replace(/hidden/g, " ");
@@ -98,7 +100,6 @@ breakDropList.addEventListener('click', function(e){
 
   xhr.addEventListener("load",function(){
     var response = JSON.parse(xhr.responseText);
-    console.log(response);
     response.locations.forEach(function(location){
       if(searchValue == location.name){
         currentBreak = location.name;
@@ -148,7 +149,7 @@ breakDropList.addEventListener('click', function(e){
         swap(resultsPage, homePage);
         var removeFromFavorites = document.getElementById('removeFromFavorites');
         var addToFavorites = document.getElementById('addToFavorites');
-        var currentUser = document.getElementById('greetUser').textContent;
+        currentUser = document.getElementById('greetUser').textContent;
         var index = currentUser.indexOf(' ');
         currentUser = currentUser.slice(index+1);
 
@@ -230,7 +231,7 @@ searchButton.addEventListener('click', function(e){
         // makeMap(location);
         var removeFromFavorites = document.getElementById('removeFromFavorites');
         var addToFavorites = document.getElementById('addToFavorites');
-        var currentUser = document.getElementById('greetUser').textContent;
+        currentUser = document.getElementById('greetUser').textContent;
         var index = currentUser.indexOf(' ');
         currentUser = currentUser.slice(index+1);
 
@@ -254,6 +255,11 @@ searchButton.addEventListener('click', function(e){
 var returnHome = document.getElementById('spotTitle');
 returnHome.addEventListener('click', function(e){
   swap(homePage, resultsPage);
+})
+
+var returnHome2 = document.getElementById('spotTitle2');
+returnHome2.addEventListener('click', function(e){
+  swap(homePage, favoritesPage);
 })
 
 var loginReturn = document.getElementById('loginTitle');
@@ -411,10 +417,16 @@ createAccountButton.addEventListener('click',function(e){
 
         greetUser = document.getElementById('greetUser');
         greetUser2 = document.getElementById('greetUser2');
+        greetUser3 = document.getElementById('greetUser3');
         var str = data.name;
         var index = data.name.indexOf(" ");
         greetUser.textContent = "Welcome, "+str.slice(0,index);
         greetUser2.textContent = "Welcome, "+str.slice(0,index);
+        greetUser3.textContent = "Welcome, "+str.slice(0,index);
+
+        var viewFavorites = document.getElementById('viewFavorites');
+        viewFavorites.className = viewFavorites.className.replace(/hidden/g, " ");
+
         swap(homePage,createAccountPage);
       }
       else{
@@ -458,11 +470,18 @@ signInButton.addEventListener('click', function(e){
 
       greetUser = document.getElementById('greetUser');
       greetUser2 = document.getElementById('greetUser2');
+      greetUser3 = document.getElementById('greetUser3');
       var str = xhr.responseText;
       var index = str.indexOf(" ");
+      currentUser = str.slice(0, index);
+
       greetUser.textContent = "Welcome, "+str.slice(0,index);
       greetUser2.textContent = "Welcome, "+str.slice(0,index);
+      greetUser3.textContent = "Welcome, "+str.slice(0,index);
       swap(homePage, loginPage);
+
+      var viewFavorites = document.getElementById('viewFavorites');
+      viewFavorites.className = viewFavorites.className.replace(/hidden/g, " ");
 
       var notification = document.getElementById('notification');
       var loginDiv = document.getElementById('loginDiv');
@@ -486,6 +505,9 @@ logoutButton.addEventListener('click', function(e){
   greetUser.textContent = '';
   greetUser2.textContent = '';
   swap(homePage, loginPage);
+
+  var viewFavorites = document.getElementById('viewFavorites');
+  viewFavorites.className += ' hidden ';
 })
 
 var logoutButton2 = document.getElementById('logout2');
@@ -503,13 +525,36 @@ logoutButton2.addEventListener('click', function(e){
   greetUser.textContent = '';
   greetUser2.textContent = '';
   swap(homePage, resultsPage);
+
+  var viewFavorites = document.getElementById('viewFavorites');
+  viewFavorites.className += ' hidden ';
+})
+
+var logoutButton3 = document.getElementById('logout3');
+logoutButton3.addEventListener('click', function(e){
+  login = document.getElementById('login');
+  logout = document.getElementById('logout');
+  swap(login, logout);
+
+  login2 = document.getElementById('login2');
+  logout2 = document.getElementById('logout2');
+  swap(login2, logout2);
+
+  greetUser = document.getElementById('greetUser');
+  greetUser2 = document.getElementById('greetUser2');
+  greetUser.textContent = '';
+  greetUser2.textContent = '';
+  swap(homePage, favoritesPage);
+
+  var viewFavorites = document.getElementById('viewFavorites');
+  viewFavorites.className += ' hidden ';
 })
 
 //Adding to favorites button
 var addToFavorites = document.getElementById('addToFavorites');
 addToFavorites.addEventListener('click', function(e){
   var currentBreak = document.getElementById('streamTitle').textContent;
-  var currentUser = document.getElementById('greetUser').textContent;
+  currentUser = document.getElementById('greetUser').textContent;
   var index = currentUser.indexOf(' ');
   currentUser = currentUser.slice(index+1);
   var data = {"currentUser":currentUser, "currentBreak":currentBreak};
@@ -541,7 +586,7 @@ var removeFromFavorites = document.getElementById('removeFromFavorites');
 var addToFavorites = document.getElementById('addToFavorites');
 removeFromFavorites.addEventListener('click', function(e){
   var currentBreak = document.getElementById('streamTitle').textContent;
-  var currentUser = document.getElementById('greetUser').textContent;
+  currentUser = document.getElementById('greetUser').textContent;
   var index = currentUser.indexOf(' ');
   currentUser = currentUser.slice(index+1);
   var data = {"currentUser":currentUser, "currentBreak":currentBreak};
@@ -552,5 +597,40 @@ removeFromFavorites.addEventListener('click', function(e){
   xhr.send(JSON.stringify(data));
 
   xhr.addEventListener('load', function(e){
+  })
+})
+
+var viewFavorites = document.getElementById('viewFavorites');
+viewFavorites.addEventListener('click', function(){
+  var data = {"currentUser":currentUser};
+  swap(favoritesPage,homePage);
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST','/favorites/view');
+  xhr.setRequestHeader('Content-type','application/json');
+  xhr.send(JSON.stringify(data));
+
+  xhr.addEventListener('load', function(){
+    var favoritesList = JSON.parse(xhr.responseText);
+    console.log(favoritesList);
+    favoritesList.forEach(function(favorite){
+      var favoriteRow = document.createElement('div');
+      favoriteRow.setAttribute('class','row');
+      var camDiv = document.createElement('div');
+      camDiv.setAttribute('class','col-lg-6 col-lg-offset-1');
+      favoriteRow.appendChild(camDiv);
+      var favoriteCam = document.createElement('iframe');
+      favoriteCam.setAttribute('width','640');
+      favoriteCam.setAttribute('height','360');
+      favoriteCam.setAttribute('src', favorite.url);
+      camDiv.appendChild(favoriteCam);
+      var infoDiv = document.createElement('div');
+      infoDiv.setAttribute('class','col-lg-4');
+      var favoriteName = document.createElement('h2');
+      favoriteName.setAttribute('align','center');
+      favoriteName.textContent = favorite.name;
+      infoDiv.appendChild(favoriteName);
+      favoriteRow.appendChild(infoDiv);
+      favoritesPage.appendChild(favoriteRow);
+    })
   })
 })

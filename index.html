@@ -7,7 +7,9 @@
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="default.css" media="screen" title="no title" charset="utf-8">
-  <link rel="icon" href="./favicon.png">
+  <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+
 </head>
 <body>
   <div id='homePage' class="container-fluid">
@@ -29,7 +31,6 @@
               <ul id='breakDropList' class="dropdown-menu">
                 <li><a href="#">Orange</a></li>
                 <li role="separator" class="divider"></li>
-
               </ul>
             </li>
           </ul>
@@ -40,6 +41,7 @@
             <button id='searchButton' type="button" class="btn btn-default">Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
           </form>
           <ul class="nav navbar-nav navbar-right">
+            <li><button id='viewFavorites' type="button" name="button" class='btn btn-default hidden'>Favorites <span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button></li>
             <li><a id="greetUser"></a></li>
             <li><a id="login" href="#">Log In <span id="loginSpan" class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
             <li><a class="hidden" id="logout" href="#">Log Out <span id="loginSpan" class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
@@ -64,19 +66,19 @@
           <div class="item active">
             <img src="weather.jpg" alt="...">
             <div class="carousel-caption">
-              <h3>Al Gore was right!</h3>
+              <h3>Al Gore was right</h3>
             </div>
           </div>
           <div class="item">
             <img src="grom.jpg" alt="...">
             <div class="carousel-caption">
-              <h3>Look at this grom getting shacked</h3>
+              <h3>Look at this grom about to get pitted</h3>
             </div>
           </div>
           <div class="item">
             <img src="wet.jpg" alt="...">
             <div class="carousel-caption">
-              <h3>Totes tubular</h3>
+              <h3>Green room all day</h3>
             </div>
           </div>
           <div class="item">
@@ -104,17 +106,17 @@
       <div class="panel panel-primary">
         <div align='center' class="panel panel-heading">
           <h2>Daily Conditions</h2>
-          <h4>Know before you go  <i class="glyphicon glyphicon-send" aria-hidden="true"> </i></h4>
+          <p>Know before you go  <i class="glyphicon glyphicon-send" aria-hidden="true"> </i></p>
         </div>
         <div class="panel panel-body">
           <div class='col-lg-5' id='tideDiv'>
             <div id='tidePlot'>
-              <iframe id='tideFrame' width="600" height="400" frameborder="0" scrolling="no" src="https://plot.ly/~pschreyer/6.embed"></iframe>
+              <iframe id='tideFrame' width="600" height="400" frameborder="0" scrolling="no" src="https://plot.ly/~pschreyer/8.embed"></iframe>
             </div>
           </div>
           <div class='col-lg-6' id='uvDiv'>
             <div id='uvPlot'>
-              <iframe id='uvFrame' width="700" height="400" frameborder="0" scrolling="no" src="https://plot.ly/~pschreyer/2.embed"></iframe>
+              <iframe id='uvFrame' width="700" height="400" frameborder="0" scrolling="no" src="https://plot.ly/~pschreyer/10.embed"></iframe>
               <h2 align='center' id='time'></h2>
             </div>
           </div>
@@ -244,7 +246,29 @@
       </div>
     </div>
   </div>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARTtB4yLVDM1J6AWp0JmaD9f3in_sqXmM&callback=initMap" async defer></script>
-  <script src="default.js" charset="utf-8"></script>
+  <div id='favoritesPage' class="row hidden">
+    <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a id = "spotTitle2" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a id="greetUser3"></a></li>
+            <li><a id="logout3" href="#">Log Out <span id="loginSpan" class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="row">
+      <h1 align='center' id="streamTitle"></h1>
+    </div>
+    <div class="row">
+      <h1 align='center'>Favorites</h1>
+    </div>
+  </div>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARTtB4yLVDM1J6AWp0JmaD9f3in_sqXmM&callback=initMap" async defer></script>
+<script src="default.js" charset="utf-8"></script>
 </body>
 </html>
