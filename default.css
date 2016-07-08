@@ -97,6 +97,14 @@ body{
   background-attachment: fixed;
   background-position: left center;
 }
+#resultsPage{
+  min-height: 1000px;
+  max-width: 1400px;
+  background-size: 100% 100%;
+  background-image: url('beach.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
 #favoritesTitle{
   margin-top: 60px;
   color: white;
