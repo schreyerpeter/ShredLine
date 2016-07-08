@@ -625,12 +625,52 @@ viewFavorites.addEventListener('click', function(){
       camDiv.appendChild(favoriteCam);
       var infoDiv = document.createElement('div');
       infoDiv.setAttribute('class','col-lg-4');
-      var favoriteName = document.createElement('h2');
+      var favoriteName = document.createElement('h1');
       favoriteName.setAttribute('align','center');
       favoriteName.textContent = favorite.name;
+      var favoriteSize = document.createElement('h2');
+      favoriteSize.setAttribute('align','center');
+      var favoriteConditions = document.createElement('h3');
+      favoriteConditions.setAttribute('align','center');
+
+      favoriteSize.textContent = "Wave height: "+Math.floor(favorite.size_ft)+"-"+Math.ceil(favorite.size_ft) + " ft";
+      if(favorite.size_ft<3){
+        favoriteSize.style.backgroundColor = 'green';
+        favoriteSize.style.color = 'white';
+      }
+      else if(favorite.size_ft>=3 && favorite.size_ft<6){
+        favoriteSize.style.backgroundColor = 'orange';
+        favoriteSize.style.color = 'white';
+      }
+      else{
+        favoriteSize.style.backgroundColor = 'red';
+        favoriteSize.style.color = 'white';
+      }
+
+      favoriteConditions.textContent = "Conditions: "+favorite.shape_full;
+      if(favorite.shape_full == "Poor"){
+        favoriteConditions.style.backgroundColor = 'red';
+        favoriteConditions.style.color = 'white';
+      }
+      else if(favorite.shape_full == "Poor-Fair"){
+        favoriteConditions.style.backgroundColor = 'orange';
+        favoriteConditions.style.color = 'white';
+
+      }
+      else if(favorite.shape_full == "Fair"){
+        favoriteConditions.style.backgroundColor = 'blue';
+        favoriteConditions.style.color = 'white';
+      }
+      else{
+        favoriteConditions.style.backgroundColor = 'green';
+        favoriteConditions.style.color = 'white';
+      }
       infoDiv.appendChild(favoriteName);
+      infoDiv.appendChild(favoriteSize);
+      infoDiv.appendChild(favoriteConditions);
       favoriteRow.appendChild(infoDiv);
       favoritesPage.appendChild(favoriteRow);
+
     })
   })
 })
