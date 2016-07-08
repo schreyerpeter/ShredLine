@@ -146,11 +146,14 @@ app.post('/favorites/add/:location', function(req,res){
         user.favorites.push(currentBreak);
       }
       else{
+        var match = false;
         for(var i=0; i<user.favorites.length; i++){
-          if(user.favorites[i].indexOf(currentBreak) == -1){
-            user.favorites.push(currentBreak)
+          if(user.favorites[i] == currentBreak){
+            match = true;
+            break;
           }
         }
+        if(match == false) user.favorites.push(currentBreak);
       }
     }
   })
@@ -170,6 +173,28 @@ app.delete('/favorites/remove/:location', function(req,res){
     }
   })
   res.send();
+})
+
+app.post('/favorites/view', function(req,res){
+  var currentUser = req.body.currentUser;
+  var favoritesData = [];
+  users.forEach(function(user){
+    if(user.name.indexOf(currentUser) != -1){
+      for(var i=0; i<user.favorites.length; i++){
+        cams.forEach(function(cam){
+          if(cam.name.indexOf(user.favorites[i]) != -1){
+            var data = {};
+            data.name = cam.name;
+            data.shape_full = cam.shape_full;
+            data.size_ft = cam.size_ft;
+            data.url = cam.url;
+            favoritesData.push(data);
+          }
+        })
+      }
+    }
+  })
+  res.send(favoritesData);
 })
 
 app.get('/time', function(req,res){
