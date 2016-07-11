@@ -1,7 +1,7 @@
 # ShredLine
 
-It's an app for surfers who want to check conditions before they go out.
-  User will be able to:
+###It's an app for surfers who want to check conditions before they go out.
+  ####Users will be able to
     1. View live streams of their favorite breaks.
     2. Add breaks to a "Favorites" list for easy viewing.
     3. Login and create a profile.
