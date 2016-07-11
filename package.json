@@ -4,6 +4,7 @@
   "description": "Surfline Clone",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "pschreyer",
@@ -14,7 +15,20 @@
     "express": "^4.14.0",
     "json-parser": "^1.1.5",
     "moment": "^2.14.1",
+    "plotly": "^1.0.6",
     "request": "^2.72.0",
     "serve-favicon": "^2.3.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schreyerpeter/ShredLine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/schreyerpeter/ShredLine/issues"
+  },
+  "homepage": "https://github.com/schreyerpeter/ShredLine#readme",
+  "engines": {
+    "node": "6.2.1"
   }
 }
