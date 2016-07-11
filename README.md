@@ -6,3 +6,6 @@ It's a website for surfers who want to check conditions before they go out.
     3. Login and create a profile.
     4. Quickly read about the current conditions.
     5. Leave a comment on a break's page.
+
+
+![alt tag](https://github.com/schreyerpeter/ShredLine/blob/master/screenshots/createAccount.png)
