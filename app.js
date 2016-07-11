@@ -254,5 +254,5 @@ app.get('/tide', function(req,res){
     }
   })
 })
-
-app.listen(8080);
+var PORT = process.env.PORT || 8080;
+app.listen(PORT);
