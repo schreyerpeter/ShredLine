@@ -12,7 +12,7 @@
 
 </head>
 <body>
-  <div id='homePage' class="container-fluid">
+  <div id='home-page' class="container-fluid">
     <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -27,8 +27,8 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a id='breakDrop' href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">County <span class="caret"></span></a>
-              <ul id='breakDropList' class="dropdown-menu">
+              <a id='break-drop' href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">County <span class="caret"></span></a>
+              <ul id='break-drop-list' class="dropdown-menu">
                 <li><a href="#">Orange</a></li>
                 <li role="separator" class="divider"></li>
               </ul>
@@ -38,20 +38,20 @@
             <div class="form-group">
               <input id='search' type="text" class="form-control" placeholder="Search by location">
             </div>
-            <button id='searchButton' type="button" class="btn btn-default">Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            <button id='search-button' type="button" class="btn btn-default">Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
           </form>
           <ul class="nav navbar-nav navbar-right">
-            <li><button id='viewFavorites' type="button" name="button" class='btn btn-default hidden'>Favorites <span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button></li>
-            <li><a id="greetUser"></a></li>
-            <li><a id="login" href="#">Log In <span id="loginSpan" class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
-            <li><a class="hidden" id="logout" href="#">Log Out <span id="loginSpan" class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
+            <li><button id='view-favorites' type="button" name="button" class='btn btn-default hidden'>Favorites <span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button></li>
+            <li><a id="greet-user"></a></li>
+            <li><a id="login" href="#">Log In <span id="login-span" class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+            <li><a class="hidden" id="logout" href="#">Log Out <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
           </ul>
         </div>
       </div>
     </nav>
     <div id='row' class="row">
-      <div id='homeFrameDiv' class="col-lg-6">
-        <iframe id='homeFrame' width="640" height="360" src="http://e.cdn-surfline.com/syndication/embed/v1/player.html?id=8366" frameborder="0" scrolling="no" allowfullscreen></iframe><div style="margin: 10px 0px;"><a id="homeFrameText" href="http://www.surfline.com" target="_blank"><p href="http://www.surfline.com/surf-report/teahupoo-tahiti_8366/" target="_blank" title="Teahupoo Surf Report and HD Surf Cam">Today's Legendary Break: Teahupoo</p></a></div>
+      <div id='home-frame-div' class="col-lg-6">
+        <iframe id='home-frame' width="640" height="360" src="http://e.cdn-surfline.com/syndication/embed/v1/player.html?id=8366" frameborder="0" scrolling="no" allowfullscreen></iframe><div style="margin: 10px 0px;"><a id="home-frame-text" href="http://www.surfline.com" target="_blank"><p href="http://www.surfline.com/surf-report/teahupoo-tahiti_8366/" target="_blank" title="Teahupoo Surf Report and HD Surf Cam">Today's Legendary Break: Teahupoo</p></a></div>
       </div>
       <div id="carousel" class="carousel slide col-lg-5" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -109,14 +109,14 @@
           <p>Know before you go  <i class="glyphicon glyphicon-send" aria-hidden="true"> </i></p>
         </div>
         <div class="panel panel-body">
-          <div class='col-lg-5' id='tideDiv'>
-            <div id='tidePlot'>
-              <iframe id='tideFrame' width="600" height="400" frameborder="0" scrolling="no" src="https://plot.ly/~pschreyer/8.embed"></iframe>
+          <div class='col-lg-5' id='tide-div'>
+            <div id='tide-plot'>
+              <iframe id='tide-frame' width="600" height="400" frameborder="0" scrolling="no" src="https://plot.ly/~pschreyer/8.embed"></iframe>
             </div>
           </div>
-          <div class='col-lg-6' id='uvDiv'>
-            <div id='uvPlot'>
-              <iframe id='uvFrame' width="700" height="400" frameborder="0" scrolling="no" src="https://plot.ly/~pschreyer/10.embed"></iframe>
+          <div class='col-lg-6' id='uv-div'>
+            <div id='uv-plot'>
+              <iframe id='uv-frame' width="700" height="400" frameborder="0" scrolling="no" src="https://plot.ly/~pschreyer/10.embed"></iframe>
               <h2 align='center' id='time'></h2>
             </div>
           </div>
@@ -125,7 +125,7 @@
     </div>
   </div>
   <div class="container-fluid">
-    <div id='resultsPage' class="row hidden">
+    <div id='results-page' class="row hidden">
       <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -135,21 +135,21 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a id = "spotTitle" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
+            <a id = "spot-title" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li><a id="greetUser2"></a></li>
-              <li><a class="hidden" id="logout2" href="#">Log Out <span id="loginSpan" class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
-              <li><a id="login2" href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+              <li><a id="greet-user-2"></a></li>
+              <li><a class="hidden" id="logout-2" href="#">Log Out <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
+              <li><a id="login-2" href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
             </ul>
           </div>
         </div>
       </nav>
       <div class="row">
-        <h1 align='center' id="streamTitle"></h1>
+        <h1 align='center' id="stream-title"></h1>
       </div>
-      <div id='resultsRow' class="row">
+      <div id='results-row' class="row">
         <div class="col-lg-6 col-lg-offset-1">
           <div id="stream">
             <iframe id='frame' width="640" height="360" src="" frameborder="0" scrolling="no" allowfullscreen></iframe><div style="margin: 10px 0px;"><a href="http://www.surfline.com" target="_blank"> Live HD Surf Cam. Check out more Surf Cams at Surfline.com</a></div>
@@ -157,43 +157,41 @@
         </div>
         <div align = 'center' class="col-lg-4">
           <div id="map"></div>
-          <h2 id='spotSize'></h2>
-          <h3 id='spotConditions'></h3>
-          <button id='addToFavorites' class='btn btn-primary' type="button" name="button">Add to favorites <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
-          <button id='removeFromFavorites' class='hidden btn btn-danger' type="button" name="button">Remove from Favorites <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
+          <h2 id='spot-size'></h2>
+          <h3 id='spot-conditions'></h3>
+          <button id='add-to-favorites' class='btn btn-primary' type="button" name="button">Add to favorites <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+          <button id='remove-from-favorites' class='hidden btn btn-danger' type="button" name="button">Remove from Favorites <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span></button>
         </div>
       </div>
     </div>
   </div>
   <div class="container-fluid">
-
-
-    <div id='loginPage' class="row hidden">
+    <div id='login-page' class="row hidden">
       <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a id = "loginTitle" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
+            <a id = "login-title" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li><a id="createAccountButton1" href="#">Create Account <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+              <li><a id="create-account-button-1" href="#">Create Account <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
             </ul>
           </div>
         </div>
       </nav>
-      <div id="loginBox" class="row">
-        <div id="loginDiv" class="col-lg-6">
-          <h1 id='signInTitle'>Sign in</h1>
-          <h4>Need an account? <a id="createAccountButton2" href="#">Create account</a></h4>
+      <div id="login-box" class="row">
+        <div id="login-div" class="col-lg-6">
+          <h1 id='sign-in-title'>Sign in</h1>
+          <h4>Need an account? <a id="create-account-button-2" href="#">Create account</a></h4>
           <form>
             <fieldset class="form-group">
               <label for="formGroupExampleInput">Username</label>
-              <input type="text" class="form-control" id="signInUsername" placeholder="ShakaBrah">
+              <input type="text" class="form-control" id="sign-in-username" placeholder="ShakaBrah">
             </fieldset>
             <fieldset class="form-group">
               <label for="formGroupExampleInput2">Password</label>
-              <input type="password" class="form-control" id="signInPassword" placeholder="*******">
-              <button id="signInButton" class='btn btn-primary' type="button" name="button">SIGN IN</button>
+              <input type="password" class="form-control" id="sign-in-password" placeholder="*******">
+              <button id="sign-in-button" class='btn btn-primary' type="button" name="button">SIGN IN</button>
             </fieldset>
           </form>
         </div>
@@ -201,52 +199,52 @@
     </div>
   </div>
   <div class="container-fluid">
-    <div id='createAccountPage' class="row hidden">
+    <div id='create-account-page' class="row hidden">
       <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a id = "createAccountTitle" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
+            <a id = "create-account-title" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li><a id="returnToLogin" href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+              <li><a id="return-to-login" href="#">Log In <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
             </ul>
           </div>
         </div>
       </nav>
-      <div id="createAccountBox" class="row">
-        <div id="createAccountDiv" class="col-lg-6">
+      <div id="create-account-box" class="row">
+        <div id="create-account-div" class="col-lg-6">
           <h1>Create Account</h1>
-          <h4>Already have an account? <a id="returnToLogin2" href="#">Sign In</a></h4>
+          <h4>Already have an account? <a id="return-to-login-2" href="#">Sign In</a></h4>
           <div class="row">
             <div class="col-lg-6">
               <form>
                 <fieldset class="form-group">
-                  <label id='userNameInput' for="UserNameInput">Full Name</label>
-                  <input type="text" class="form-control" id="setUserName" placeholder="Kelly Slater">
+                  <label id='user-name-input' for="UserNameInput">Full Name</label>
+                  <input type="text" class="form-control" id="set-user-name" placeholder="Kelly Slater">
                 </fieldset>
               </form>
             </div>
             <div class="col-lg-6">
               <form>
                 <fieldset>
-                  <label id="usernameInput" for="lastNameInput">Username</label>
-                  <input type="text" class="form-control" id="setUserUsername" placeholder="KellyGetsSoPitted">
+                  <label id="username-input" for="lastNameInput">Username</label>
+                  <input type="text" class="form-control" id="set-user-username" placeholder="KellyGetsSoPitted">
                 </fieldset>
               </form>
             </div>
           </div>
           <form>
             <fieldset class="form-group">
-              <label id="userEmailInput" for="formGroupEmail">Email</label>
-              <input type="text" class="form-control" id="setUserEmail" placeholder="example@example.com">
+              <label id="user-email-input" for="formGroupEmail">Email</label>
+              <input type="text" class="form-control" id="set-user-email" placeholder="example@example.com">
             </fieldset>
           </form>
           <form>
             <fieldset>
-              <label id ='userPasswordInput' for="formGroupPassword">Password</label>
-              <input type="password" class="form-control" id="setUserPassword" placeholder="*******">
-              <button id="createAccountButton" class='btn btn-primary' type="button" name="button">CREATE ACCOUNT</button>
+              <label id ='user-password-input' for="formGroupPassword">Password</label>
+              <input type="password" class="form-control" id="set-user-password" placeholder="*******">
+              <button id="create-account-button" class='btn btn-primary' type="button" name="button">CREATE ACCOUNT</button>
               <h5>By clicking "Create Account" you agree to the ShredLine Terms of use and privacy policy.</h5>
             </fieldset>
           </form>
@@ -254,24 +252,22 @@
       </div>
     </div>
   </div>
-  <div id='favoritesContainer' class="container-fluid">
-    <div id='favoritesPage' class="row hidden">
+  <div id='favorites-container' class="container-fluid">
+    <div id='favorites-page' class="row hidden">
       <nav class="navbar navbar-fixed-top navbar-light" style="background-color:#e3f2fd;">
         <div class="navbar-header">
-          <a id = "spotTitle2" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
+          <a id = "spot-title-2" class="navbar-brand" href="#"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span> ShredLine </a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a id="greetUser3"></a></li>
-            <li><a id="logout3" href="#">Log Out <span id="loginSpan" class="glyphicon glyphicon-log-out" aria-hidden="true"></span> </a> </li>
+            <li><a id="greet-user-3"></a></li>
+            <li><a id="logout-3" href="#">Log Out <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> </a> </li>
           </ul>
         </div>
       </nav>
+      <h1 id='favorites-title' align='center'>Favorites</h1>
       <div class="row">
-        <h1 id='favoritesTitle' align='center'>Favorites</h1>
-      </div>
-      <div class="row">
-        <div class="col-lg-12" id="favoritesContent">
+        <div class="col-lg-12" id="favorites-content">
         </div>
       </div>
     </div>

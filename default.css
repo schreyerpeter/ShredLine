@@ -5,16 +5,13 @@ body{
 .hidden{
   display: none;
 }
-#navBar{
-  width: 100%;
-}
 #title{
   font-size: 20px;
 }
-#spotTitle, #loginTitle, #title, #createAccountTitle{
+#spot-title, #login-title, #title, #create-account-title{
   font-size: 20px;
 }
-#streamTitle{
+#stream-title{
   margin-top: 60px;
 }
 #map{
@@ -22,29 +19,29 @@ body{
   height: 220px;
   background-color: grey;
 }
-#loginPage, #createAccountPage{
+#login-page, #create-account-page{
   background-image: url('Z.jpg');
   background-size: 100% 120%;
   background-repeat: no-repeat;
 }
-#loginDiv, #createAccountDiv{
+#login-div, #create-account-div{
   background-color: white;
   width: 400px;
   height: auto;
   left: 40%;
 }
-#loginBox, #createAccountBox{
+#login-box, #create-account-box{
   margin-top: 100px;
   width: 100%;
   height: 100%;
   min-height: 900px;
   max-height: 1000px;
 }
-#signInButton, #createAccountButton{
+#sign-in-button, #create-account-button{
   width: 100%;
   margin-top: 40px;
 }
-#homeFrame{
+#home-frame{
   margin-top: 70px;
   margin-left: -25px;
 }
@@ -63,13 +60,13 @@ body{
 #carousel{
   margin-top: 70px;
 }
-#homeFrameDiv{
+#home-frame-div{
   margin-left: 60px;
 }
-#uvDiv{
+#uv-div{
   margin-left: 40px;
 }
-#tideDiv{
+#tide-div{
   margin-left: -30px;
   margin-right: 20px;
 }
@@ -79,25 +76,27 @@ body{
 .carousel-indicators{
   margin-bottom: 60px;
 }
-#spotSize, #spotConditions{
+#spot-size, #spot-conditions{
   width: 450px;
   background-color: grey;
 }
-#breakDropList{
+#break-drop-list{
   overflow-y: scroll;
   max-height: 150px;
 }
-#viewFavorites{
+#view-favorites{
   margin-top: 8px;
 }
-#favoritesPage{
+#favorites-page{
+  min-height: 1000px;
+  max-width: 1400px;
   background-image: url('sunset.jpg');
   background-size: 150% 150%;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: left center;
 }
-#resultsPage{
+#results-page{
   min-height: 1000px;
   max-width: 1400px;
   background-size: 100% 100%;
@@ -105,14 +104,14 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-#favoritesTitle{
+#favorites-title{
   margin-top: 60px;
   color: white;
 }
-#favoritesContent{
+#favorites-content{
   height: 100%;
   width: 100%;
 }
-#favoritesContainer{
+#favorites-container{
   position: static;
 }
