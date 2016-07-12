@@ -4,18 +4,24 @@ var resultsPage = document.getElementById('results-page');
 var loginPage = document.getElementById('login-page');
 var createAccountPage = document.getElementById('create-account-page');
 var favoritesPage = document.getElementById('favorites-page');
+var breakDrop = document.getElementById('break-drop');
+var breakDropList = document.getElementById('break-drop-list');
 
+
+//Removes all elements
 function clear(element){
   while(element.firstChild){
     element.removeChild(element.firstChild);
   }
 }
 
+//Displays and hides elements
 function swap(showPage, hidePage){
   hidePage.className += ' hidden ';
   showPage.className = showPage.className.replace(/hidden/g, " ");
 }
 
+//Display Google map iframe
 function initMap(location) {
   var myPosition = {lat: location.latitude, lng: location.longitude};
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -29,6 +35,7 @@ function initMap(location) {
     title: 'Shred Here'
   });
 }
+
 //Show Time on Page
 setInterval(function showTime(){
   var xhr = new XMLHttpRequest();
@@ -68,6 +75,7 @@ function tide(){
   })
 }
 
+//Display the home page and the default Surfline iframe
 document.addEventListener('load', function(e){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/');
@@ -80,8 +88,7 @@ document.addEventListener('load', function(e){
   })
 });
 
-var breakDrop = document.getElementById('break-drop');
-var breakDropList = document.getElementById('break-drop-list');
+//Responsive drop down menu on home page
 breakDrop.addEventListener('click',function(e){
   var xhr = new XMLHttpRequest();
   xhr.open('GET', '/spotNames');
@@ -103,6 +110,7 @@ breakDrop.addEventListener('click',function(e){
   })
 })
 
+//Adds search functionality to clicking on an item in the drop down menu
 breakDropList.addEventListener('click', function(e){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/drop');
@@ -627,7 +635,6 @@ viewFavorites.addEventListener('click', function(){
 
   xhr.addEventListener('load', function(){
     var favoritesList = JSON.parse(xhr.responseText);
-    console.log(favoritesList);
     favoritesList.forEach(function(favorite){
       var favoriteRow = document.createElement('div');
       favoriteRow.setAttribute('class','row');
