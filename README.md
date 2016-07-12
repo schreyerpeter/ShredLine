@@ -10,7 +10,7 @@
  
     
 *The home page:*
-![alt tag](https://github.com/schreyerpeter/ShredLine/blob/master/screenshots/homePage.png)
+![alt tag](https://github.com/schreyerpeter/ShredLine/blob/master/public/screenshots/homePage.png)
 *View individual breaks:*
 ![alt tag](https://github.com/schreyerpeter/ShredLine/blob/master/screenshots/resultsPage.png)
 *Create an account:*
