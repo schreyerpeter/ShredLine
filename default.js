@@ -1,4 +1,15 @@
 var currentUser = '';
+var homePage = document.getElementById('home-page');
+var resultsPage = document.getElementById('results-page');
+var loginPage = document.getElementById('login-page');
+var createAccountPage = document.getElementById('create-account-page');
+var favoritesPage = document.getElementById('favorites-page');
+
+function clear(element){
+  while(element.firstChild){
+    element.removeChild(element.firstChild);
+  }
+}
 
 function swap(showPage, hidePage){
   hidePage.className += ' hidden ';
@@ -33,7 +44,7 @@ setInterval(function showTime(){
 
 //Show UV index graph
 function showUV(){
-  var uvDiv = document.getElementById('uvPlot');
+  var uvDiv = document.getElementById('uv-plot');
   var xhr = new XMLHttpRequest();
   xhr.open('GET', '/uv');
   xhr.setRequestHeader('Content-type','application/json');
@@ -64,12 +75,13 @@ document.addEventListener('load', function(e){
   xhr.send();
 
   xhr.addEventListener('load', function(){
-    var frame = document.getElementById('homeFrame');
+    var frame = document.getElementById('home-frame');
     frame.setAttribute('src',location.url);
   })
 });
 
-
+var breakDrop = document.getElementById('break-drop');
+var breakDropList = document.getElementById('break-drop-list');
 breakDrop.addEventListener('click',function(e){
   var xhr = new XMLHttpRequest();
   xhr.open('GET', '/spotNames');
@@ -106,14 +118,14 @@ breakDropList.addEventListener('click', function(e){
         var stream = document.getElementById('stream');
         var frame = document.getElementById('frame');
         frame.setAttribute('src',location.url);
-        var homeFrame = document.getElementById('homeFrame');
+        var homeFrame = document.getElementById('home-frame');
         homeFrame.setAttribute('src',location.url);
-        var homeFrameText = document.getElementById('homeFrameText');
+        var homeFrameText = document.getElementById('home-frame-text');
         homeFrameText.textContent = "Your most recently viewed cam: "+location.name;
         homeFrameText.setAttribute('align','center');
-        var streamTitle = document.getElementById('streamTitle');
+        var streamTitle = document.getElementById('stream-title');
         streamTitle.textContent = location.name;
-        var spotSize = document.getElementById('spotSize');
+        var spotSize = document.getElementById('spot-size');
         spotSize.textContent = "Wave height: "+Math.floor(location.size_ft)+"-"+Math.ceil(location.size_ft) + " ft";
         if(location.size<3){
           spotSize.style.backgroundColor = 'green';
@@ -127,7 +139,7 @@ breakDropList.addEventListener('click', function(e){
           spotSize.style.backgroundColor = 'red';
           spotSize.style.color = 'white';
         }
-        var spotConditions = document.getElementById('spotConditions');
+        var spotConditions = document.getElementById('spot-conditions');
         spotConditions.textContent = "Conditions: "+location.shape_full;
         if(location.shape_full == "Poor"){
           spotConditions.style.backgroundColor = 'red';
@@ -147,9 +159,9 @@ breakDropList.addEventListener('click', function(e){
           spotConditions.style.color = 'white';
         }
         swap(resultsPage, homePage);
-        var removeFromFavorites = document.getElementById('removeFromFavorites');
-        var addToFavorites = document.getElementById('addToFavorites');
-        currentUser = document.getElementById('greetUser').textContent;
+        var removeFromFavorites = document.getElementById('remove-from-favorites');
+        var addToFavorites = document.getElementById('add-to-favorites');
+        currentUser = document.getElementById('greet-user').textContent;
         var index = currentUser.indexOf(' ');
         currentUser = currentUser.slice(index+1);
 
@@ -171,6 +183,7 @@ breakDropList.addEventListener('click', function(e){
 })
 
 var currentBreak;
+var searchButton = document.getElementById('search-button');
 searchButton.addEventListener('click', function(e){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/streams');
@@ -187,14 +200,14 @@ searchButton.addEventListener('click', function(e){
         var stream = document.getElementById('stream');
         var frame = document.getElementById('frame');
         frame.setAttribute('src',location.url);
-        var homeFrame = document.getElementById('homeFrame');
+        var homeFrame = document.getElementById('home-frame');
         homeFrame.setAttribute('src',location.url);
-        var homeFrameText = document.getElementById('homeFrameText');
+        var homeFrameText = document.getElementById('home-frame-text');
         homeFrameText.textContent = "Your most recently viewed cam: "+location.name;
         homeFrameText.setAttribute('align','center');
-        var streamTitle = document.getElementById('streamTitle');
+        var streamTitle = document.getElementById('stream-title');
         streamTitle.textContent = location.name;
-        var spotSize = document.getElementById('spotSize');
+        var spotSize = document.getElementById('spot-size');
         spotSize.textContent = "Wave height: "+Math.floor(location.size_ft)+"-"+Math.ceil(location.size_ft) + " ft";
         if(location.size<3){
           spotSize.style.backgroundColor = 'green';
@@ -208,7 +221,7 @@ searchButton.addEventListener('click', function(e){
           spotSize.style.backgroundColor = 'red';
           spotSize.style.color = 'white';
         }
-        var spotConditions = document.getElementById('spotConditions');
+        var spotConditions = document.getElementById('spot-conditions');
         spotConditions.textContent = "Conditions: "+location.shape_full;
         if(location.shape_full == "Poor"){
           spotConditions.style.backgroundColor = 'red';
@@ -229,9 +242,9 @@ searchButton.addEventListener('click', function(e){
         }
         swap(resultsPage, homePage);
         // makeMap(location);
-        var removeFromFavorites = document.getElementById('removeFromFavorites');
-        var addToFavorites = document.getElementById('addToFavorites');
-        currentUser = document.getElementById('greetUser').textContent;
+        var removeFromFavorites = document.getElementById('remove-from-favorites');
+        var addToFavorites = document.getElementById('add-to-favorites');
+        currentUser = document.getElementById('greet-user').textContent;
         var index = currentUser.indexOf(' ');
         currentUser = currentUser.slice(index+1);
 
@@ -252,17 +265,17 @@ searchButton.addEventListener('click', function(e){
   })
 });
 
-var returnHome = document.getElementById('spotTitle');
+var returnHome = document.getElementById('spot-title');
 returnHome.addEventListener('click', function(e){
   swap(homePage, resultsPage);
 })
 
-var returnHome2 = document.getElementById('spotTitle2');
+var returnHome2 = document.getElementById('spot-title-2');
 returnHome2.addEventListener('click', function(e){
   swap(homePage, favoritesPage);
 })
 
-var loginReturn = document.getElementById('loginTitle');
+var loginReturn = document.getElementById('login-title');
 loginReturn.addEventListener('click', function(e){
   swap(homePage, loginPage);
 })
@@ -272,26 +285,26 @@ login.addEventListener('click', function(e){
   swap(loginPage, homePage);
 })
 
-var login2 = document.getElementById('login2');
+var login2 = document.getElementById('login-2');
 login2.addEventListener('click', function(e){
   swap(loginPage, resultsPage);
 })
 
-var returnToLogin = document.getElementById('returnToLogin');
+var returnToLogin = document.getElementById('return-to-login');
 returnToLogin.addEventListener('click', function(e){
-  var userNameInput = document.getElementById('userNameInput');
+  var userNameInput = document.getElementById('user-name-input');
   userNameInput.className += " neutral ";
   userNameInput.textContent = 'Full Name';
-  var userEmailInput = document.getElementById('userEmailInput');
+  var userEmailInput = document.getElementById('user-email-input');
   userEmailInput.className += " neutral ";
   userEmailInput.textContent = 'Email';
-  var userPasswordInput = document.getElementById('userPasswordInput');
+  var userPasswordInput = document.getElementById('user-password-input');
   userPasswordInput.className += " neutral ";
   userPasswordInput.textContent = 'Password';
-  var setUserName = document.getElementById('setUserName').value;
-  var setUserUsername = document.getElementById('setUserUsername').value;
-  var setUserEmail = document.getElementById('setUserEmail').value;
-  var setUserPassword = document.getElementById('setUserPassword').value;
+  var setUserName = document.getElementById('set-user-name').value;
+  var setUserUsername = document.getElementById('set-user-username').value;
+  var setUserEmail = document.getElementById('set-user-email').value;
+  var setUserPassword = document.getElementById('set-user-password').value;
   setUserName = '';
   setUserUsername = '';
   setUserEmail = '';
@@ -301,21 +314,21 @@ returnToLogin.addEventListener('click', function(e){
   swap(loginPage, createAccountPage);
 })
 
-var returnToLogin2 = document.getElementById('returnToLogin2');
+var returnToLogin2 = document.getElementById('return-to-login-2');
 returnToLogin2.addEventListener('click', function(e){
-  var userNameInput = document.getElementById('userNameInput');
+  var userNameInput = document.getElementById('user-name-input');
   userNameInput.className += " neutral ";
   userNameInput.textContent = 'Full Name';
-  var userEmailInput = document.getElementById('userEmailInput');
+  var userEmailInput = document.getElementById('user-email-input');
   userEmailInput.className += " neutral ";
   userEmailInput.textContent = 'Email';
-  var userPasswordInput = document.getElementById('userPasswordInput');
+  var userPasswordInput = document.getElementById('user-password-input');
   userPasswordInput.className += " neutral ";
   userPasswordInput.textContent = 'Password';
-  var setUserName = document.getElementById('setUserName').value;
-  var setUserUsername = document.getElementById('setUserUsername').value;
-  var setUserEmail = document.getElementById('setUserEmail').value;
-  var setUserPassword = document.getElementById('setUserPassword').value;
+  var setUserName = document.getElementById('set-user-name').value;
+  var setUserUsername = document.getElementById('set-user-username').value;
+  var setUserEmail = document.getElementById('set-user-email').value;
+  var setUserPassword = document.getElementById('set-user-password').value;
   setUserName = '';
   setUserUsername = '';
   setUserEmail = '';
@@ -325,60 +338,60 @@ returnToLogin2.addEventListener('click', function(e){
   swap(loginPage, createAccountPage);
 })
 
-var returnToLogin3 = document.getElementById('createAccountTitle');
+var returnToLogin3 = document.getElementById('create-account-title');
 returnToLogin3.addEventListener('click', function(e){
   swap(homePage, createAccountPage);
 })
 
-var createAccountButton1 = document.getElementById('createAccountButton1');
+var createAccountButton1 = document.getElementById('create-account-button-1');
 createAccountButton1.addEventListener('click', function(e){
   swap(createAccountPage, loginPage);
-  var signInButton = document.getElementById('signInButton');
-  var username = document.getElementById('signInUsername');
-  var password = document.getElementById('signInPassword');
+  var signInButton = document.getElementById('sign-in-button');
+  var username = document.getElementById('sign-in-username');
+  var password = document.getElementById('sign-in-password');
   username.value = '';
   password.value = '';
   signInButton.className = 'btn btn-primary';
   signInButton.textContent = 'SIGN IN';
 })
 
-var createAccountButton2 = document.getElementById('createAccountButton2');
+var createAccountButton2 = document.getElementById('create-account-button-2');
 createAccountButton2.addEventListener('click', function(e){
   swap(createAccountPage, loginPage);
-  var signInButton = document.getElementById('signInButton');
-  var username = document.getElementById('signInUsername');
-  var password = document.getElementById('signInPassword');
+  var signInButton = document.getElementById('sign-in-button');
+  var username = document.getElementById('sign-in-username');
+  var password = document.getElementById('sign-in-password');
   username.value = '';
   password.value = '';
   signInButton.className = 'btn btn-primary';
   signInButton.textContent = 'SIGN IN';
 })
 
-var createAccountButton = document.getElementById('createAccountButton');
+var createAccountButton = document.getElementById('create-account-button');
 createAccountButton.addEventListener('click',function(e){
-  var setUserName = document.getElementById('setUserName').value;
-  var setUserUsername = document.getElementById('setUserUsername').value;
-  var setUserEmail = document.getElementById('setUserEmail').value;
-  var setUserPassword = document.getElementById('setUserPassword').value;
+  var setUserName = document.getElementById('set-user-name').value;
+  var setUserUsername = document.getElementById('set-user-username').value;
+  var setUserEmail = document.getElementById('set-user-email').value;
+  var setUserPassword = document.getElementById('set-user-password').value;
   var favorites = [];
 
   if(setUserUsername.length < 5){
-    var userNameInput = document.getElementById('usernameInput');
+    var userNameInput = document.getElementById('username-input');
     usernameInput.className += " invalid ";
     usernameInput.textContent = 'Username must be at least five characters';
   }
   if(setUserName.indexOf(' ')==-1){
-    var userNameInput = document.getElementById('userNameInput');
+    var userNameInput = document.getElementById('user-name-input');
     userNameInput.className += " invalid ";
     userNameInput.textContent = 'Include first and last name';
   }
   if(setUserEmail.indexOf('@')==-1){
-    var userEmailInput = document.getElementById('userEmailInput');
+    var userEmailInput = document.getElementById('user-email-input');
     userEmailInput.className += " invalid ";
     userEmailInput.textContent = 'Email address must be valid';
   }
   if(setUserPassword.length<5){
-    var userPasswordInput = document.getElementById('userPasswordInput');
+    var userPasswordInput = document.getElementById('user-password-input');
     userPasswordInput.className += " invalid ";
     userPasswordInput.textContent = 'Password must be at least five characters';
   }
@@ -395,7 +408,7 @@ createAccountButton.addEventListener('click',function(e){
 
     xhr.addEventListener('load', function(e){
       var response = JSON.parse(xhr.responseText);
-      var usernameInput = document.getElementById('usernameInput');
+      var usernameInput = document.getElementById('username-input');
       if(response == true){
         usernameInput.textContent = "Username - that username is already in use";
         usernameInput.className = 'invalid';
@@ -411,20 +424,20 @@ createAccountButton.addEventListener('click',function(e){
         logout = document.getElementById('logout');
         swap(logout, login);
 
-        login2 = document.getElementById('login2');
-        logout2 = document.getElementById('logout2');
+        login2 = document.getElementById('login-2');
+        logout2 = document.getElementById('logout-2');
         swap(logout2, login2);
 
-        greetUser = document.getElementById('greetUser');
-        greetUser2 = document.getElementById('greetUser2');
-        greetUser3 = document.getElementById('greetUser3');
+        greetUser = document.getElementById('greet-user');
+        greetUser2 = document.getElementById('greet-user-2');
+        greetUser3 = document.getElementById('greet-user-3');
         var str = data.name;
         var index = data.name.indexOf(" ");
         greetUser.textContent = "Welcome, "+str.slice(0,index);
         greetUser2.textContent = "Welcome, "+str.slice(0,index);
         greetUser3.textContent = "Welcome, "+str.slice(0,index);
 
-        var viewFavorites = document.getElementById('viewFavorites');
+        var viewFavorites = document.getElementById('view-favorites');
         viewFavorites.className = viewFavorites.className.replace(/hidden/g, " ");
 
         swap(homePage,createAccountPage);
@@ -437,10 +450,10 @@ createAccountButton.addEventListener('click',function(e){
   }
 })
 
-var signInButton = document.getElementById('signInButton');
+var signInButton = document.getElementById('sign-in-button');
 signInButton.addEventListener('click', function(e){
-  var username = document.getElementById('signInUsername');
-  var password = document.getElementById('signInPassword');
+  var username = document.getElementById('sign-in-username');
+  var password = document.getElementById('sign-in-password');
   var data = {
     "username":username.value, "password":password.value
   };
@@ -464,13 +477,13 @@ signInButton.addEventListener('click', function(e){
       logout = document.getElementById('logout');
       swap(logout, login);
 
-      login2 = document.getElementById('login2');
-      logout2 = document.getElementById('logout2');
+      login2 = document.getElementById('login-2');
+      logout2 = document.getElementById('logout-2');
       swap(logout2, login2);
 
-      greetUser = document.getElementById('greetUser');
-      greetUser2 = document.getElementById('greetUser2');
-      greetUser3 = document.getElementById('greetUser3');
+      greetUser = document.getElementById('greet-user');
+      greetUser2 = document.getElementById('greet-user-2');
+      greetUser3 = document.getElementById('greet-user-3');
       var str = xhr.responseText;
       var index = str.indexOf(" ");
       currentUser = str.slice(0, index);
@@ -480,11 +493,11 @@ signInButton.addEventListener('click', function(e){
       greetUser3.textContent = "Welcome, "+str.slice(0,index);
       swap(homePage, loginPage);
 
-      var viewFavorites = document.getElementById('viewFavorites');
+      var viewFavorites = document.getElementById('view-favorites');
       viewFavorites.className = viewFavorites.className.replace(/hidden/g, " ");
 
       var notification = document.getElementById('notification');
-      var loginDiv = document.getElementById('loginDiv');
+      var loginDiv = document.getElementById('login-div');
       loginDiv.removeChild(notification);
     }
   })
@@ -496,65 +509,65 @@ logoutButton.addEventListener('click', function(e){
   logout = document.getElementById('logout');
   swap(login, logout);
 
-  login2 = document.getElementById('login2');
-  logout2 = document.getElementById('logout2');
+  login2 = document.getElementById('login-2');
+  logout2 = document.getElementById('logout-2');
   swap(login2, logout2);
 
-  greetUser = document.getElementById('greetUser');
-  greetUser2 = document.getElementById('greetUser2');
+  greetUser = document.getElementById('greet-user');
+  greetUser2 = document.getElementById('greet-user-2');
   greetUser.textContent = '';
   greetUser2.textContent = '';
   swap(homePage, loginPage);
 
-  var viewFavorites = document.getElementById('viewFavorites');
+  var viewFavorites = document.getElementById('view-favorites');
   viewFavorites.className += ' hidden ';
 })
 
-var logoutButton2 = document.getElementById('logout2');
+var logoutButton2 = document.getElementById('logout-2');
 logoutButton2.addEventListener('click', function(e){
   login = document.getElementById('login');
   logout = document.getElementById('logout');
   swap(login, logout);
 
-  login2 = document.getElementById('login2');
-  logout2 = document.getElementById('logout2');
+  login2 = document.getElementById('login-2');
+  logout2 = document.getElementById('logout-2');
   swap(login2, logout2);
 
-  greetUser = document.getElementById('greetUser');
-  greetUser2 = document.getElementById('greetUser2');
+  greetUser = document.getElementById('greet-user');
+  greetUser2 = document.getElementById('greet-user-2');
   greetUser.textContent = '';
   greetUser2.textContent = '';
   swap(homePage, resultsPage);
 
-  var viewFavorites = document.getElementById('viewFavorites');
+  var viewFavorites = document.getElementById('view-favorites');
   viewFavorites.className += ' hidden ';
 })
 
-var logoutButton3 = document.getElementById('logout3');
+var logoutButton3 = document.getElementById('logout-3');
 logoutButton3.addEventListener('click', function(e){
   login = document.getElementById('login');
   logout = document.getElementById('logout');
   swap(login, logout);
 
-  login2 = document.getElementById('login2');
-  logout2 = document.getElementById('logout2');
+  login2 = document.getElementById('login-2');
+  logout2 = document.getElementById('logout-2');
   swap(login2, logout2);
 
-  greetUser = document.getElementById('greetUser');
-  greetUser2 = document.getElementById('greetUser2');
+  greetUser = document.getElementById('greet-user');
+  greetUser2 = document.getElementById('greet-user-2');
   greetUser.textContent = '';
   greetUser2.textContent = '';
   swap(homePage, favoritesPage);
 
-  var viewFavorites = document.getElementById('viewFavorites');
+  var viewFavorites = document.getElementById('view-favorites');
   viewFavorites.className += ' hidden ';
 })
 
 //Adding to favorites button
-var addToFavorites = document.getElementById('addToFavorites');
+var addToFavorites = document.getElementById('add-to-favorites');
 addToFavorites.addEventListener('click', function(e){
-  var currentBreak = document.getElementById('streamTitle').textContent;
-  currentUser = document.getElementById('greetUser').textContent;
+  var currentBreak = document.getElementById('stream-title').textContent;
+  currentUser = document.getElementById('greet-user').textContent;
   var index = currentUser.indexOf(' ');
   currentUser = currentUser.slice(index+1);
   var data = {"currentUser":currentUser, "currentBreak":currentBreak};
@@ -564,12 +577,12 @@ addToFavorites.addEventListener('click', function(e){
     notification.setAttribute('class','alert alert-danger');
     notification.setAttribute('id','notification');
     notification.textContent = "You must be logged in to favorite breaks";
-    loginDiv = document.getElementById('loginDiv');
+    loginDiv = document.getElementById('login-div');
     loginDiv.appendChild(notification);
   }
   else{
-    var removeFromFavorites = document.getElementById('removeFromFavorites');
-    var addToFavorites = document.getElementById('addToFavorites');
+    var removeFromFavorites = document.getElementById('remove-from-favorites');
+    var addToFavorites = document.getElementById('add-to-favorites');
     swap(removeFromFavorites, addToFavorites);
     var xhr = new XMLHttpRequest();
     xhr.open("POST",'/favorites/add/:location');
@@ -582,11 +595,11 @@ addToFavorites.addEventListener('click', function(e){
 })
 
 //Removing from favorites
-var removeFromFavorites = document.getElementById('removeFromFavorites');
-var addToFavorites = document.getElementById('addToFavorites');
+var removeFromFavorites = document.getElementById('remove-from-favorites');
+var addToFavorites = document.getElementById('add-to-favorites');
 removeFromFavorites.addEventListener('click', function(e){
-  var currentBreak = document.getElementById('streamTitle').textContent;
-  currentUser = document.getElementById('greetUser').textContent;
+  var currentBreak = document.getElementById('stream-title').textContent;
+  currentUser = document.getElementById('greet-user').textContent;
   var index = currentUser.indexOf(' ');
   currentUser = currentUser.slice(index+1);
   var data = {"currentUser":currentUser, "currentBreak":currentBreak};
@@ -600,10 +613,12 @@ removeFromFavorites.addEventListener('click', function(e){
   })
 })
 
-var viewFavorites = document.getElementById('viewFavorites');
+var viewFavorites = document.getElementById('view-favorites');
+var favoritesContent = document.getElementById('favorites-content');
 viewFavorites.addEventListener('click', function(){
   var data = {"currentUser":currentUser};
   swap(favoritesPage,homePage);
+  clear(favoritesContent);
   var xhr = new XMLHttpRequest();
   xhr.open('POST','/favorites/view');
   xhr.setRequestHeader('Content-type','application/json');
@@ -627,6 +642,7 @@ viewFavorites.addEventListener('click', function(){
       infoDiv.setAttribute('class','col-lg-4');
       var favoriteName = document.createElement('h1');
       favoriteName.setAttribute('align','center');
+      favoriteName.style.color = 'white';
       favoriteName.textContent = favorite.name;
       var favoriteSize = document.createElement('h2');
       favoriteSize.setAttribute('align','center');
@@ -669,8 +685,7 @@ viewFavorites.addEventListener('click', function(){
       infoDiv.appendChild(favoriteSize);
       infoDiv.appendChild(favoriteConditions);
       favoriteRow.appendChild(infoDiv);
-      favoritesPage.appendChild(favoriteRow);
-
+      favoritesContent.appendChild(favoriteRow);
     })
   })
 })
