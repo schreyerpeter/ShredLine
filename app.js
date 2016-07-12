@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-app.use(express.static("./Pictures"));
+app.use(express.static("./public"));
 var request = require('request');
 var cookieParser = require('cookie-parser')();
 app.use(cookieParser);
@@ -106,6 +106,7 @@ app.post('/createAccount/:username/', function(req,res){
       userList.email = req.body.email;
       userList.password = req.body.password;
       userList.id = req.body.id;
+      userList.favorites = [];
       users.push(userList);
     }
   })
