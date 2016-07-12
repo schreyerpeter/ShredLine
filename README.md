@@ -7,6 +7,8 @@
 3. Login and create a profile.
 4. Quickly read about the current conditions.
 5. Leave a comment on a break's page.
+ 
+Try it out at http://secure-reaches-20557.herokuapp.com/
     
 *The home page:*
 ![alt tag](https://github.com/schreyerpeter/ShredLine/blob/master/screenshots/homePage.png)
@@ -19,4 +21,4 @@
 *View all of your favorites:*
 ![alt tag](https://github.com/schreyerpeter/ShredLine/blob/master/screenshots/favorites.png)
 
-Try it out at https://secure-reaches-20557.herokuapp.com/
+
