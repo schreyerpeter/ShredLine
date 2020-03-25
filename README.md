@@ -34,5 +34,3 @@
 5. Request
 6. Spitcast API
 7. Environmental Protection Agency API
-
-### Try it out at http://secure-reaches-20557.herokuapp.com/
